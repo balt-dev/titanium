@@ -199,7 +199,7 @@ class Bot(commands.Bot):
                 raw_element["author"],
             )
             self.elements_by_name[name.lower()] = element
-            if element.atomic_number is not None:
+            if element.atomic_number is not None and element.atomic_number >= 0:
                 self.elements_by_atomic_number[element.atomic_number] = element
             if element.symbol is not None:
                 self.elements_by_symbol[element.symbol.lower()] = element

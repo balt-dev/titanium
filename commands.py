@@ -60,14 +60,11 @@ class CommandCog(commands.Cog):
                 color=element.embed_color,
                 title=element.name
             )
-            if element.symbol is not None:
-                emb.add_field(name="Symbol", value=element.symbol)
-            if element.atomic_number is not None:
+            emb.add_field(name="Symbol", value=element.symbol)
+            if element.atomic_number >= 0:
                 emb.add_field(name="Atomic Number", value=element.atomic_number)
-            if element.pronouns is not None:
-                emb.add_field(name="Pronouns", value=element.pronouns)
-            if element.author is not None:
-                emb.add_field(name="Author", value=element.author, inline = False)
+            emb.add_field(name="Pronouns", value=element.pronouns)
+            emb.add_field(name="Author", value=element.author, inline = False)
             path = element.name.lower() + ".png"
             emb.set_image(url="attachment://" + path)
             icon = element.icon.copy()

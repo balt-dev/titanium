@@ -1,5 +1,5 @@
 post_id = 756531227794767872
-prefixes = ["."]
+prefixes = [","]
 description = "beep :3"
 
 # The width and height of each element
