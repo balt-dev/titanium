@@ -502,6 +502,15 @@ embed_color = 0xE8CB73
 pronouns = "he/him"
 author = "@elementcattos"
 
+[Caesium]
+atomic_number = 55
+symbol = "Cs"
+path = "sliced/Cesium.png"
+coordinates = {x = 58, y = 393}
+embed_color = 0xE8CB73
+pronouns = "he/him"
+author = "@elementcattos"
+
 [Barium]
 atomic_number = 56
 symbol = "Ba"
