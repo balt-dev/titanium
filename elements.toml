@@ -1078,3 +1078,13 @@ embed_color = 0x007F46
 pronouns = "he/him"
 author = "@elementcattos"
 
+
+
+
+[Pukicho]
+atomic_number = -1
+symbol = "!!"
+path = "pukicho.png"
+embed_color = 0xFFFF80
+pronouns = "he/they"
+author = "@pukicho"
