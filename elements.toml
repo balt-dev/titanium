@@ -1,0 +1,1071 @@
+[Muonium]
+atomic_number = 0
+symbol = "Mu"
+path = "sliced/Muonium.png"
+coordinates = {x = 58, y = 50}
+embed_color = 0xBFC8FF
+pronouns = "hse/ehr"
+author = "@elementcattos, @refractingsolaris"
+
+[Hydrogen]
+atomic_number = 1
+symbol = "H"
+path = "sliced/Hydrogen.png"
+coordinates = {x = 58, y = 148}
+embed_color = 0xEC86DC
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Helium]
+atomic_number = 2
+symbol = "He"
+path = "sliced/Helium.png"
+coordinates = {x = 891, y = 148}
+embed_color = 0xFF6A00
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Lithium]
+atomic_number = 3
+symbol = "Li"
+path = "sliced/Lithium.png"
+coordinates = {x = 58, y = 197}
+embed_color = 0xB5B1A2
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Beryllium]
+atomic_number = 4
+symbol = "Be"
+path = "sliced/Beryllium.png"
+coordinates = {x = 107, y = 197}
+embed_color = 0x4AE5C5
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Boron]
+atomic_number = 5
+symbol = "B"
+path = "sliced/Boron.png"
+coordinates = {x = 646, y = 197}
+embed_color = 0x5B5853
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Carbon]
+atomic_number = 6
+symbol = "C"
+path = "sliced/Carbon.png"
+coordinates = {x = 695, y = 197}
+embed_color = 0x262626
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Nitrogen]
+atomic_number = 7
+symbol = "N"
+path = "sliced/Nitrogen.png"
+coordinates = {x = 744, y = 197}
+embed_color = 0xBFFFFF
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Oxygen]
+atomic_number = 8
+symbol = "O"
+path = "sliced/Oxygen.png"
+coordinates = {x = 793, y = 197}
+embed_color = 0x7F7FFF
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Fluorine]
+atomic_number = 9
+symbol = "F"
+path = "sliced/Fluorine.png"
+coordinates = {x = 842, y = 197}
+embed_color = 0xCEBB80
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Neon]
+atomic_number = 10
+symbol = "Ne"
+path = "sliced/Neon.png"
+coordinates = {x = 891, y = 197}
+embed_color = 0xFFF929
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Sodium]
+atomic_number = 11
+symbol = "Na"
+path = "sliced/Sodium.png"
+coordinates = {x = 58, y = 246}
+embed_color = 0xD8DAD5
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Magnesium]
+atomic_number = 12
+symbol = "Mg"
+path = "sliced/Magnesium.png"
+coordinates = {x = 107, y = 246}
+embed_color = 0x78705D
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Aluminium]
+atomic_number = 13
+symbol = "Al"
+path = "sliced/Aluminium.png"
+coordinates = {x = 646, y = 246}
+embed_color = 0xCAD8E3
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Silicon]
+atomic_number = 14
+symbol = "Si"
+path = "sliced/Silicon.png"
+coordinates = {x = 695, y = 246}
+embed_color = 0x8896B9
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Phosphorus]
+atomic_number = 15
+symbol = "P"
+path = "sliced/Phosphorus.png"
+coordinates = {x = 744, y = 246}
+embed_color = 0xFF3F3F
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Sulfur]
+atomic_number = 16
+symbol = "S"
+path = "sliced/Sulfur.png"
+coordinates = {x = 793, y = 246}
+embed_color = 0xE5D200
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Chlorine]
+atomic_number = 17
+symbol = "Cl"
+path = "sliced/Chlorine.png"
+coordinates = {x = 842, y = 246}
+embed_color = 0xB7CC00
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Argon]
+atomic_number = 18
+symbol = "Ar"
+path = "sliced/Argon.png"
+coordinates = {x = 891, y = 246}
+embed_color = 0xC23FFF
+pronouns = "they/them"
+author = "@elementcattos, @baltdev"
+
+[Potassium]
+atomic_number = 19
+symbol = "K"
+path = "sliced/Potassium.png"
+coordinates = {x = 58, y = 295}
+embed_color = 0xFFF0B2
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Calcium]
+atomic_number = 20
+symbol = "Ca"
+path = "sliced/Calcium.png"
+coordinates = {x = 107, y = 295}
+embed_color = 0xFFFFFF
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Scandium]
+atomic_number = 21
+symbol = "Sc"
+path = "sliced/Scandium.png"
+coordinates = {x = 156, y = 295}
+embed_color = 0xECE6CE
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Titanium]
+atomic_number = 22
+symbol = "Ti"
+path = "sliced/Titanium.png"
+coordinates = {x = 205, y = 295}
+embed_color = 0xB5ACA3
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Vanadium]
+atomic_number = 23
+symbol = "V"
+path = "sliced/Vanadium.png"
+coordinates = {x = 254, y = 295}
+embed_color = 0xAED18F
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Chromium]
+atomic_number = 24
+symbol = "Cr"
+path = "sliced/Chromium.png"
+coordinates = {x = 303, y = 295}
+embed_color = 0x5D88F7
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Manganese]
+atomic_number = 25
+symbol = "Mn"
+path = "sliced/Manganese.png"
+coordinates = {x = 352, y = 295}
+embed_color = 0xFB36F8
+pronouns = "they/them"
+author = "@lithominium"
+
+[Iron]
+atomic_number = 26
+symbol = "Fe"
+path = "sliced/Iron.png"
+coordinates = {x = 401, y = 295}
+embed_color = 0xC0C0C0
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Cobalt]
+atomic_number = 27
+symbol = "Co"
+path = "sliced/Cobalt.png"
+coordinates = {x = 450, y = 295}
+embed_color = 0x4166B9
+pronouns = "he/him"
+author = "@mobropro"
+
+[Nickel]
+atomic_number = 28
+symbol = "Ni"
+path = "sliced/Nickel.png"
+coordinates = {x = 499, y = 295}
+embed_color = 0x82D8A7
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Copper]
+atomic_number = 29
+symbol = "Cu"
+path = "sliced/Copper.png"
+coordinates = {x = 548, y = 295}
+embed_color = 0xC76236
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Zinc]
+atomic_number = 30
+symbol = "Zn"
+path = "sliced/Zinc.png"
+coordinates = {x = 597, y = 295}
+embed_color = 0x84B6C1
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Gallium]
+atomic_number = 31
+symbol = "Ga"
+path = "sliced/Gallium.png"
+coordinates = {x = 646, y = 295}
+embed_color = 0xCAD6E6
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Germanium]
+atomic_number = 32
+symbol = "Ge"
+path = "sliced/Germanium.png"
+coordinates = {x = 695, y = 295}
+embed_color = 0x8A8A8A
+pronouns = "he/him"
+author = "@radonine"
+
+[Arsenic]
+atomic_number = 33
+symbol = "As"
+path = "sliced/Arsenic.png"
+coordinates = {x = 744, y = 295}
+embed_color = 0xDDE5DA
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Selenium]
+atomic_number = 34
+symbol = "Se"
+path = "sliced/Selenium.png"
+coordinates = {x = 793, y = 295}
+embed_color = 0xA33746
+pronouns = "he/him"
+author = "@sonnettheseacoat"
+
+[Bromine]
+atomic_number = 35
+symbol = "Br"
+path = "sliced/Bromine.png"
+coordinates = {x = 842, y = 295}
+embed_color = 0x2F1D1C
+pronouns = "genderfluid"
+author = "@elementcattos"
+
+[Krypton]
+atomic_number = 36
+symbol = "Kr"
+path = "sliced/Krypton.png"
+coordinates = {x = 891, y = 295}
+embed_color = 0xFF3F3F
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Rubidium]
+atomic_number = 37
+symbol = "Rb"
+path = "sliced/Rubidium.png"
+coordinates = {x = 58, y = 344}
+embed_color = 0xFF3F52
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Strontium]
+atomic_number = 38
+symbol = "Sr"
+path = "sliced/Strontium.png"
+coordinates = {x = 107, y = 344}
+embed_color = 0xF4F1C4
+pronouns = "she/her"
+author = "@baltdev"
+
+[Yttrium]
+atomic_number = 39
+symbol = "Y"
+path = "sliced/Yttrium.png"
+coordinates = {x = 156, y = 344}
+embed_color = 0xB0B0B0
+pronouns = "he/him"
+author = "@abugidaithink"
+
+[Zirconium]
+atomic_number = 40
+symbol = "Zr"
+path = "sliced/Zirconium.png"
+coordinates = {x = 205, y = 344}
+embed_color = 0x75CBDC
+pronouns = "they/them 💎"
+author = "@shardthefuckingwhajje"
+
+[Niobium]
+atomic_number = 41
+symbol = "Nb"
+path = "sliced/Niobium.png"
+coordinates = {x = 254, y = 344}
+embed_color = 0x5B439E
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Molybdenum]
+atomic_number = 42
+symbol = "Mo"
+path = "sliced/Molybdenum.png"
+coordinates = {x = 303, y = 344}
+embed_color = 0xC2BFBA
+pronouns = "he/him...?"
+author = "@elementcattos"
+
+[Technetium]
+atomic_number = 43
+symbol = "Tc"
+path = "sliced/Technetium.png"
+coordinates = {x = 352, y = 344}
+embed_color = 0xC183F5
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Ruthenium]
+atomic_number = 44
+symbol = "Ru"
+path = "sliced/Ruthenium.png"
+coordinates = {x = 401, y = 344}
+embed_color = 0xC5C9D4
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Rhodium]
+atomic_number = 45
+symbol = "Rh"
+path = "sliced/Rhodium.png"
+coordinates = {x = 450, y = 344}
+embed_color = 0xB22323
+pronouns = "they/them"
+author = "@sed4906, @elementcattos"
+
+[Palladium]
+atomic_number = 46
+symbol = "Pd"
+path = "sliced/Palladium.png"
+coordinates = {x = 499, y = 344}
+embed_color = 0xFFD668
+pronouns = "she/her"
+author = "@chessbird"
+
+[Silver]
+atomic_number = 47
+symbol = "Ag"
+path = "sliced/Silver.png"
+coordinates = {x = 548, y = 344}
+embed_color = 0xEEF2F3
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Cadmium]
+atomic_number = 48
+symbol = "Cd"
+path = "sliced/Cadmium.png"
+coordinates = {x = 597, y = 344}
+embed_color = 0xFCF59A
+pronouns = "she/her"
+author = "@shardthefuckingwhajje"
+
+[Indium]
+atomic_number = 49
+symbol = "In"
+path = "sliced/Indium.png"
+coordinates = {x = 646, y = 344}
+embed_color = 0x8B8A85
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Tin]
+atomic_number = 50
+symbol = "Sn"
+path = "sliced/Tin.png"
+coordinates = {x = 695, y = 344}
+embed_color = 0xE5DAAC
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Antimony]
+atomic_number = 51
+symbol = "Sb"
+path = "sliced/Antimony.png"
+coordinates = {x = 744, y = 344}
+embed_color = 0xE6E6E6
+pronouns = "she/her"
+author = "@sylsoddsandends"
+
+[Tellurium]
+atomic_number = 52
+symbol = "Te"
+path = "sliced/Tellurium.png"
+coordinates = {x = 793, y = 344}
+embed_color = 0x4C657B
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Iodine]
+atomic_number = 53
+symbol = "I"
+path = "sliced/Iodine.png"
+coordinates = {x = 842, y = 344}
+embed_color = 0x662052
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Xenon]
+atomic_number = 54
+symbol = "Xe"
+path = "sliced/Xenon.png"
+coordinates = {x = 891, y = 344}
+embed_color = 0x4B56EC
+pronouns = "xe/xem"
+author = "@elementcattos"
+
+[Cesium]
+atomic_number = 55
+symbol = "Cs"
+path = "sliced/Cesium.png"
+coordinates = {x = 58, y = 393}
+embed_color = 0xE8CB73
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Barium]
+atomic_number = 56
+symbol = "Ba"
+path = "sliced/Barium.png"
+coordinates = {x = 107, y = 393}
+embed_color = 0xA6906B
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Lanthanum]
+atomic_number = 57
+symbol = "La"
+path = "sliced/Lanthanum.png"
+coordinates = {x = 205, y = 500}
+embed_color = 0xB9B4A6
+pronouns = "he/him"
+author = "@clover-the-servine, @elementcattos"
+
+[Cerium]
+atomic_number = 58
+symbol = "Ce"
+path = "sliced/Cerium.png"
+coordinates = {x = 254, y = 500}
+embed_color = 0x8C8885
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Praseodymium]
+atomic_number = 59
+symbol = "Pr"
+path = "sliced/Praseodymium.png"
+coordinates = {x = 303, y = 500}
+embed_color = 0x7E9F4C
+pronouns = "she/her"
+author = "@shardthefuckingwhajje"
+
+[Neodymium]
+atomic_number = 60
+symbol = "Nd"
+path = "sliced/Neodymium.png"
+coordinates = {x = 352, y = 500}
+embed_color = 0xC3D0D9
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Promethium]
+atomic_number = 61
+symbol = "Pm"
+path = "sliced/Promethium.png"
+coordinates = {x = 401, y = 500}
+embed_color = 0xCE0B37
+pronouns = "she/her"
+author = "@nonbinarymissingno"
+
+[Samarium]
+atomic_number = 62
+symbol = "Sm"
+path = "sliced/Samarium.png"
+coordinates = {x = 450, y = 500}
+embed_color = 0xA18E70
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Europium]
+atomic_number = 63
+symbol = "Eu"
+path = "sliced/Europium.png"
+coordinates = {x = 499, y = 500}
+embed_color = 0xFFE97F
+pronouns = "any/all"
+author = "@elementcattos"
+
+[Gadolinium]
+atomic_number = 64
+symbol = "Gd"
+path = "sliced/Gadolinium.png"
+coordinates = {x = 548, y = 500}
+embed_color = 0x7F8277
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Terbium]
+atomic_number = 65
+symbol = "Tb"
+path = "sliced/Terbium.png"
+coordinates = {x = 597, y = 500}
+embed_color = 0x44E500
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Dysprosium]
+atomic_number = 66
+symbol = "Dy"
+path = "sliced/Dysprosium.png"
+coordinates = {x = 646, y = 500}
+embed_color = 0xDFCFB7
+pronouns = "she/her"
+author = "@clover-the-servine, @elementcattos"
+
+[Holmium]
+atomic_number = 67
+symbol = "Ho"
+path = "sliced/Holmium.png"
+coordinates = {x = 695, y = 500}
+embed_color = 0xE8D578
+pronouns = "she/her"
+author = "@leaf404"
+
+[Erbium]
+atomic_number = 68
+symbol = "Er"
+path = "sliced/Erbium.png"
+coordinates = {x = 744, y = 500}
+embed_color = 0xFE4EBA
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Thulium]
+atomic_number = 69
+symbol = "Tm"
+path = "sliced/Thulium.png"
+coordinates = {x = 793, y = 500}
+embed_color = 0x73EAB6
+pronouns = "he/him"
+author = "@shardthefuckingwhajje"
+
+[Ytterbium]
+atomic_number = 70
+symbol = "Yb"
+path = "sliced/Ytterbium.png"
+coordinates = {x = 842, y = 500}
+embed_color = 0xFF3F75
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Lutetium]
+atomic_number = 71
+symbol = "Lu"
+path = "sliced/Lutetium.png"
+coordinates = {x = 891, y = 500}
+embed_color = 0x44EB04
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Hafnium]
+atomic_number = 72
+symbol = "Hf"
+path = "sliced/Hafnium.png"
+coordinates = {x = 205, y = 393}
+embed_color = 0x99918F
+pronouns = "they/them"
+author = "@shardthefuckingwhajje"
+
+[Tantalum]
+atomic_number = 73
+symbol = "Ta"
+path = "sliced/Tantalum.png"
+coordinates = {x = 254, y = 393}
+embed_color = 0xC27519
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Tungsten]
+atomic_number = 74
+symbol = "W"
+path = "sliced/Tungsten.png"
+coordinates = {x = 303, y = 393}
+embed_color = 0xD8D5CE
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Rhenium]
+atomic_number = 75
+symbol = "Re"
+path = "sliced/Rhenium.png"
+coordinates = {x = 352, y = 393}
+embed_color = 0x76C79B
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Osmium]
+atomic_number = 76
+symbol = "Os"
+path = "sliced/Osmium.png"
+coordinates = {x = 401, y = 393}
+embed_color = 0x5391A8
+pronouns = "he/him"
+author = "@lotus-and-pkmn"
+
+[Iridium]
+atomic_number = 77
+symbol = "Ir"
+path = "sliced/Iridium.png"
+coordinates = {x = 450, y = 393}
+embed_color = 0x425270
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Platinum]
+atomic_number = 78
+symbol = "Pt"
+path = "sliced/Platinum.png"
+coordinates = {x = 499, y = 393}
+embed_color = 0xDCDDD7
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Gold]
+atomic_number = 79
+symbol = "Au"
+path = "sliced/Gold.png"
+coordinates = {x = 548, y = 393}
+embed_color = 0xFFD800
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Mercury]
+atomic_number = 80
+symbol = "Hg"
+path = "sliced/Mercury.png"
+coordinates = {x = 597, y = 393}
+embed_color = 0x808080
+pronouns = "genderfluid"
+author = "@elementcattos"
+
+[Thallium]
+atomic_number = 81
+symbol = "Tl"
+path = "sliced/Thallium.png"
+coordinates = {x = 646, y = 393}
+embed_color = 0x7A85EF
+pronouns = "he/him"
+author = "@velcrow101, @chessbird, @elementcattos"
+
+[Lead]
+atomic_number = 82
+symbol = "Pb"
+path = "sliced/Lead.png"
+coordinates = {x = 695, y = 393}
+embed_color = 0x404040
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Bismuth]
+atomic_number = 83
+symbol = "Bi"
+path = "sliced/Bismuth.png"
+coordinates = {x = 744, y = 393}
+embed_color = 0x00E1FF
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Polonium]
+atomic_number = 84
+symbol = "Po"
+path = "sliced/Polonium.png"
+coordinates = {x = 793, y = 393}
+embed_color = 0x77CBEA
+pronouns = "she/her"
+author = "@cosmosnaught"
+
+[Astatine]
+atomic_number = 85
+symbol = "At"
+path = "sliced/Astatine.png"
+coordinates = {x = 842, y = 393}
+embed_color = 0x48505D
+pronouns = "unknown"
+author = "@shardthefuckingwhajje"
+
+[Radon]
+atomic_number = 86
+symbol = "Rn"
+path = "sliced/Radon.png"
+coordinates = {x = 891, y = 393}
+embed_color = 0x001676
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Francium]
+atomic_number = 87
+symbol = "Fr"
+path = "sliced/Francium.png"
+coordinates = {x = 58, y = 442}
+embed_color = 0xD8906A
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Radium]
+atomic_number = 88
+symbol = "Ra"
+path = "sliced/Radium.png"
+coordinates = {x = 107, y = 442}
+embed_color = 0x3EE171
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Actinium]
+atomic_number = 89
+symbol = "Ac"
+path = "sliced/Actinium.png"
+coordinates = {x = 205, y = 549}
+embed_color = 0x75ABE4
+pronouns = "he/him"
+author = "@clover-the-servine, @elementcattos"
+
+[Thorium]
+atomic_number = 90
+symbol = "Th"
+path = "sliced/Thorium.png"
+coordinates = {x = 254, y = 549}
+embed_color = 0x4D4640
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Protactinium]
+atomic_number = 91
+symbol = "Pa"
+path = "sliced/Protactinium.png"
+coordinates = {x = 303, y = 549}
+embed_color = 0xFF00FF
+pronouns = "';DROP TABLE cattos;"
+author = "@sonnettheseacoat"
+
+[Uranium]
+atomic_number = 92
+symbol = "U"
+path = "sliced/Uranium.png"
+coordinates = {x = 352, y = 549}
+embed_color = 0xFFD800
+pronouns = "???"
+author = "@elementcattos"
+
+[Neptunium]
+atomic_number = 93
+symbol = "Np"
+path = "sliced/Neptunium.png"
+coordinates = {x = 401, y = 549}
+embed_color = 0x7FC9FF
+pronouns = "???"
+author = "@elementcattos"
+
+[Plutonium]
+atomic_number = 94
+symbol = "Pu"
+path = "sliced/Plutonium.png"
+coordinates = {x = 450, y = 549}
+embed_color = 0x0094FF
+pronouns = "???"
+author = "@elementcattos"
+
+[Americium]
+atomic_number = 95
+symbol = "Am"
+path = "sliced/Americium.png"
+coordinates = {x = 499, y = 549}
+embed_color = 0xFF0000
+pronouns = "🦅/🦅"
+author = "@elementcattos"
+
+[Curium]
+atomic_number = 96
+symbol = "Cm"
+path = "sliced/Curium.png"
+coordinates = {x = 548, y = 549}
+embed_color = 0x000000
+pronouns = "?"
+author = "@shardthefuckingwhajje"
+
+[Berkelium]
+atomic_number = 97
+symbol = "Bk"
+path = "sliced/Berkelium.png"
+coordinates = {x = 597, y = 549}
+embed_color = 0x000000
+pronouns = "?"
+author = "@cautionszz"
+
+[Californium]
+atomic_number = 98
+symbol = "Cf"
+path = "sliced/Californium.png"
+coordinates = {x = 646, y = 549}
+embed_color = 0x000000
+pronouns = "?"
+author = "@elementcattos"
+
+[Einsteinium]
+atomic_number = 99
+symbol = "Es"
+path = "sliced/Einsteinium.png"
+coordinates = {x = 695, y = 549}
+embed_color = 0x3194BD
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Fermium]
+atomic_number = 100
+symbol = "Fm"
+path = "sliced/Fermium.png"
+coordinates = {x = 744, y = 549}
+embed_color = 0xE6B804
+pronouns = "they/them"
+author = "@sonnettheseacoat"
+
+[Mendelevium]
+atomic_number = 101
+symbol = "Md"
+path = "sliced/Mendelevium.png"
+coordinates = {x = 793, y = 549}
+embed_color = 0x000000
+pronouns = "?"
+author = "@voodoo-economics"
+
+[Nobelium]
+atomic_number = 102
+symbol = "No"
+path = "sliced/Nobelium.png"
+coordinates = {x = 842, y = 549}
+embed_color = 0xE83F41
+pronouns = "they/them"
+author = "@shardthefuckingwhajje"
+
+[Lawrencium]
+atomic_number = 103
+symbol = "Lr"
+path = "sliced/Lawrencium.png"
+coordinates = {x = 891, y = 549}
+embed_color = 0x000000
+pronouns = "?"
+author = "@elementcattos"
+
+[Rutherfordium]
+atomic_number = 104
+symbol = "Rf"
+path = "sliced/Rutherfordium.png"
+coordinates = {x = 205, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@elementcattos"
+
+[Dubnium]
+atomic_number = 105
+symbol = "Db"
+path = "sliced/Dubnium.png"
+coordinates = {x = 254, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@baltdev"
+
+[Seaborgium]
+atomic_number = 106
+symbol = "Sg"
+path = "sliced/Seaborgium.png"
+coordinates = {x = 303, y = 442}
+embed_color = 0xFFCD00
+pronouns = "she/her"
+author = "@cosmosnaught"
+
+[Bohrium]
+atomic_number = 107
+symbol = "Bh"
+path = "sliced/Bohrium.png"
+coordinates = {x = 352, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@elementcattos"
+
+[Hassium]
+atomic_number = 108
+symbol = "Hs"
+path = "sliced/Hassium.png"
+coordinates = {x = 401, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@cosmosnaught"
+
+[Meitnerium]
+atomic_number = 109
+symbol = "Mt"
+path = "sliced/Meitnerium.png"
+coordinates = {x = 450, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@elementcattos"
+
+[Darmstadtium]
+atomic_number = 110
+symbol = "Ds"
+path = "sliced/Darmstadtium.png"
+coordinates = {x = 499, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@elementcattos"
+
+[Roentgenium]
+atomic_number = 111
+symbol = "Rg"
+path = "sliced/Roentgenium.png"
+coordinates = {x = 548, y = 442}
+embed_color = 0x7FC9FF
+pronouns = "they/them"
+author = "@elementcattos"
+
+[Copernicium]
+atomic_number = 112
+symbol = "Cn"
+path = "sliced/Copernicium.png"
+coordinates = {x = 597, y = 442}
+embed_color = 0x3F647F
+pronouns = "he/him"
+author = "@elementcattos"
+
+[Nihonium]
+atomic_number = 113
+symbol = "Nh"
+path = "sliced/Nihonium.png"
+coordinates = {x = 646, y = 442}
+embed_color = 0xB4585E
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Flerovium]
+atomic_number = 114
+symbol = "Fl"
+path = "sliced/Flerovium.png"
+coordinates = {x = 695, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@starkat-cosmickitty"
+
+[Moscovium]
+atomic_number = 115
+symbol = "Mc"
+path = "sliced/Moscovium.png"
+coordinates = {x = 744, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@elementcattos"
+
+[Livermorium]
+atomic_number = 116
+symbol = "Lv"
+path = "sliced/Livermorium.png"
+coordinates = {x = 793, y = 442}
+embed_color = 0x000000
+pronouns = "?"
+author = "@elementcattos"
+
+[Tennessine]
+atomic_number = 117
+symbol = "Ts"
+path = "sliced/Tennessine.png"
+coordinates = {x = 842, y = 442}
+embed_color = 0x4B4E7C
+pronouns = "she/her"
+author = "@elementcattos"
+
+[Oganesson]
+atomic_number = 118
+symbol = "Og"
+path = "sliced/Oganesson.png"
+coordinates = {x = 891, y = 442}
+embed_color = 0x007F46
+pronouns = "he/him"
+author = "@elementcattos"
+

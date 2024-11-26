@@ -1,1 +1,3 @@
-pytumblr=0.1.*
+pytumblr==0.1.*
+discord.py==2.*
+Pillow==11.*
