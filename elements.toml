@@ -832,7 +832,7 @@ symbol = "U"
 path = "sliced/Uranium.png"
 coordinates = {x = 352, y = 549}
 embed_color = 0xFFD800
-pronouns = "???"
+pronouns = "any/all"
 author = "@elementcattos"
 
 [Neptunium]
@@ -841,7 +841,7 @@ symbol = "Np"
 path = "sliced/Neptunium.png"
 coordinates = {x = 401, y = 549}
 embed_color = 0x7FC9FF
-pronouns = "???"
+pronouns = "any/all"
 author = "@elementcattos"
 
 [Plutonium]
@@ -850,7 +850,7 @@ symbol = "Pu"
 path = "sliced/Plutonium.png"
 coordinates = {x = 450, y = 549}
 embed_color = 0x0094FF
-pronouns = "???"
+pronouns = "any/all"
 author = "@elementcattos"
 
 [Americium]

@@ -87,6 +87,24 @@ class CommandCog(commands.Cog):
             await self.bot.reload_extension("commands")
             return await ctx.reply("Reloaded!")
 
+    @commands.group()
+    @commands.is_owner()
+    async def toml(self, ctx: Context):
+        """Sends or recieves elements.toml. Owner-only."""
+        ...
+    
+    @toml.command()
+    @commands.is_owner()
+    async def get(self, ctx: Context):
+        """Sends elements.toml. Owner only."""
+        return await ctx.reoly(files = [discord.File("elements.toml")])
+    
+    @commands.is_owner()
+    async def set(self, ctx: Context, attachment: discord.Attachment):
+        """Sends elements.toml. Owner only."""
+        await attachment.save("elements.toml")
+        return await ctx.reply("Saved! Run `.sync`.")
+
     @commands.command()
     @commands.is_owner()
     async def test(self, ctx: Context):

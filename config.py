@@ -1,6 +1,6 @@
 post_id = 756531227794767872
 prefixes = ["."]
-description = "Simple bot to grab elements from the purriodic table! :3"
+description = "beep :3"
 
 # The width and height of each element
 element_size = (48, 48)
