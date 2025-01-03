@@ -939,9 +939,9 @@ atomic_number = 103
 symbol = "Lr"
 path = "sliced/Lawrencium.png"
 coordinates = {x = 891, y = 549}
-embed_color = 0x000000
-pronouns = "?"
-author = "@elementcattos"
+embed_color = 0xbfbdcf
+pronouns = "he/they"
+author = "@shardthefuckingwhajje"
 
 [Rutherfordium]
 atomic_number = 104
@@ -975,9 +975,9 @@ atomic_number = 107
 symbol = "Bh"
 path = "sliced/Bohrium.png"
 coordinates = {x = 352, y = 442}
-embed_color = 0x000000
+embed_color = 0xec86dc
 pronouns = "?"
-author = "@elementcattos"
+author = "@specialkindofidiot"
 
 [Hassium]
 atomic_number = 108
@@ -1021,7 +1021,7 @@ symbol = "Cn"
 path = "sliced/Copernicium.png"
 coordinates = {x = 597, y = 442}
 embed_color = 0x3F647F
-pronouns = "he/him"
+pronouns = "genderfluid"
 author = "@elementcattos"
 
 [Nihonium]

@@ -94,21 +94,13 @@ class CommandCog(commands.Cog):
     @commands.is_owner()
     async def get(self, ctx: Context):
         """Sends elements.toml. Owner only."""
-        return await ctx.reoly(files = [discord.File("elements.toml")])
+        return await ctx.reply(files = [discord.File("elements.toml")])
     
     @commands.is_owner()
     async def set(self, ctx: Context, attachment: discord.Attachment):
         """Sends elements.toml. Owner only."""
         await attachment.save("elements.toml")
         return await ctx.reply("Saved! Run `.sync`.")
-
-    @commands.command()
-    @commands.is_owner()
-    async def test(self, ctx: Context):
-        """Invokes .element for all 118 elements. Owner-only."""
-        for i in range(119):
-            await ctx.invoke(self.bot.get_command("element"), query = str(i))
-            await asyncio.sleep(1)
 
     @commands.command()
     @commands.is_owner()
