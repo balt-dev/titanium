@@ -1088,3 +1088,11 @@ path = "pukicho.png"
 embed_color = 0xFFFF80
 pronouns = "he/they"
 author = "@pukicho"
+
+[Bungy]
+atomic_number = -2
+symbol = "Bu"
+path = "bungy.png"
+embed_color = 0xFFFFff
+pronouns = "he/him"
+author = "@sciphonpylon"
