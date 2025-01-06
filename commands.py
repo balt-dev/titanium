@@ -40,6 +40,11 @@ class CommandCog(commands.Cog):
                 file = discord.File(buf, "table.png")
                 emb.set_image(url="attachment://table.png")
                 return await ctx.reply(embed=emb, files=[file])
+            if query == "nonperiodic":
+                emb = discord.Embed(title="The Non-Purriodic Table")
+                file = discord.File("elements/nonperiodics.png", "table.png")
+                emb.set_image(url="attachment://table.png")
+                return await ctx.reply(embed=emb, files=[file])
             # Parse the element's name
             query = query.lower()
             if query in self.bot.elements_by_name:
@@ -65,13 +70,17 @@ class CommandCog(commands.Cog):
                 emb.add_field(name="Atomic Number", value=element.atomic_number)
             emb.add_field(name="Pronouns", value=element.pronouns)
             emb.add_field(name="Author", value=element.author, inline = False)
-            path = element.name.lower() + ".png"
+            path = hex(hash(element.name)) + ".gif"
             emb.set_image(url="attachment://" + path)
-            icon = element.icon.copy()
-            width, height = icon.size
-            icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
+            icon = tuple(icon[0].resize(((config.element_size[0] + 2) * config.icon_scale, (config.element_size[1] + 2) * config.icon_scale), Image.Resampling.NEAREST) for icon in element.icon)
             buf = io.BytesIO()
-            icon.save(buf, format = "PNG")
+            icon[0].save(
+                buf,
+                format = "GIF",
+                save_all = True,
+                append_images = icon[1:],
+                duration = [i[1] for i in element.icon]
+            )
             buf.seek(0)
             file = discord.File(buf, path)
             return await ctx.reply(embed=emb, files=[file])

@@ -1,3 +1,16 @@
+# Caffeine and Theine - lotus-and-pkmn / osmiumcattos
+# Brass, Deisel, Gasoline, Alcohol, Petrol, Capsaicin, Menthol, Bungy, Vandentoru Fundament, Omnium, and every kirby catto - sciphonpylon
+# Telecatto Alloy - voodoo-economics
+# Vincium - profeshinul-wizurd
+# Elderich and Magic - toonsandwich
+# Vitamin C - rvtar34
+# Potassium Nitrate - CiaaiK (i dont know their tumblr at)
+# Strange Matter - thanatiawashere
+# Givanium - brobietumbles
+# Brombium and Table Sugar - nontheanon
+# Hydroldorochloflonitroxyphosplattungten Carbine - starri-cosmikat
+# Everyone Else - elementcattos 
+
 [Muonium]
 atomic_number = 0
 symbol = "Mu"
@@ -885,9 +898,9 @@ atomic_number = 97
 symbol = "Bk"
 path = "sliced/Berkelium.png"
 coordinates = {x = 597, y = 549}
-embed_color = 0x000000
-pronouns = "?"
-author = "@cautionszz"
+embed_color = 0xff5900
+pronouns = "he/him"
+author = "@elementcattos"
 
 [Californium]
 atomic_number = 98
@@ -1002,9 +1015,9 @@ atomic_number = 110
 symbol = "Ds"
 path = "sliced/Darmstadtium.png"
 coordinates = {x = 499, y = 442}
-embed_color = 0x000000
-pronouns = "?"
-author = "@elementcattos"
+embed_color = 0xf0b85a
+pronouns = "he/it"
+author = "@sciphonpylon"
 
 [Roentgenium]
 atomic_number = 111
@@ -1078,8 +1091,469 @@ embed_color = 0x007F46
 pronouns = "he/him"
 author = "@strudel-fatpaws, @elementcattos"
 
+# Nonperiodics
 
+[Caffeine]
+atomic_number = -4
+symbol = "C₈H₁₀N₄O₂"
+table = "nonperiodics.png"
+path = "sliced/Caffeine.png"
+embed_color = 0xD38F61
+pronouns = "she/her"
+author = "@lotus-and-pkmn"
+coordinates = {x = 10, y = 57}
 
+[Theine]
+atomic_number = -5
+symbol = "C₈H₁₀N₄O₂"
+table = "nonperiodics.png"
+path = "sliced/Theine.png"
+embed_color = 0x94AF60
+pronouns = "she/her"
+author = "@lotus-and-pkmn"
+coordinates = {x = 59, y = 57}
+
+[Brass]
+atomic_number = -7
+symbol = "~Cu₃Zn₂"
+table = "nonperiodics.png"
+path = "sliced/Brass.png"
+embed_color = 0xFFC600
+pronouns = "they/them"
+author = "@sciphonpylon"
+coordinates = {x = 108, y = 57}
+
+[Diesel]
+atomic_number = -8
+symbol = "~C₁₂H₂₃"
+table = "nonperiodics.png"
+path = "sliced/Diesel.png"
+embed_color = 0xA02626
+pronouns = "he/him"
+author = "@sciphonpylon"
+coordinates = {x = 157, y = 57}
+
+[Gasoline]
+atomic_number = -9
+symbol = "~C₈H₁₈"
+table = "nonperiodics.png"
+path = "sliced/Gasoline.png"
+embed_color = 0x3E55D8
+pronouns = "he/she"
+author = "@sciphonpylon"
+coordinates = {x = 206, y = 57}
+
+[Alcohol]
+atomic_number = -10
+symbol = "~RCOH"
+path = "sliced/Alcohol.png"
+table = "nonperiodics.png"
+embed_color = 0xFFC575
+pronouns = "she/they"
+author = "@sciphonpylon"
+coordinates = {x = 255, y = 57}
+
+[SCP-148]
+atomic_number = -11
+symbol = "???"
+path = "sliced/SCP-148.png"
+table = "nonperiodics.png"
+embed_color = 0x94e09d
+pronouns = "she/her"
+author = "@elementcattos"
+coordinates = {x = 304, y = 57}
+
+[Bungy]
+atomic_number = -2
+symbol = "Bu"
+path = "sliced/Bungy.png"
+embed_color = 0xFFFFFF
+pronouns = "he/him"
+author = "@sciphonpylon"
+coordinates = {x = 843, y = 57}
+table = "nonperiodics.png"
+
+[Fire]
+atomic_number = -12
+symbol = "🜂"
+path = "sliced/Fire.png"
+embed_color = 0xffd800
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 745, y = 57}
+table = "nonperiodics.png"
+
+[Air]
+atomic_number = -13
+symbol = "🜁"
+path = "sliced/Air.png"
+embed_color = 0xdef1ff
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 794, y = 57}
+table = "nonperiodics.png"
+
+[Vincium]
+atomic_number = -14
+symbol = 'Vi'
+path = "sliced/Vincium.png"
+embed_color = 0x7ccaff
+pronouns = "unknown"
+author = "@profeshinul-wizurd"
+coordinates = {x = 59, y = 106}
+table = "nonperiodics.png"
+
+[Redstone]
+atomic_number = -15
+symbol = 'Rs'
+path = "sliced/Redstone.png"
+embed_color = 0xff0000
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 108, y = 106}
+table = "nonperiodics.png"
+
+[Eldritch]
+atomic_number = -16
+symbol = '???'
+path = "sliced/Eldritch.png"
+embed_color = 0x373737
+pronouns = "unknown"
+author = "@toonsandwich"
+coordinates = {x = 157, y = 106}
+table = "nonperiodics.png"
+
+["Vitamin C"]
+atomic_number = -17
+symbol = 'C₈H₆O₈'
+path = "sliced/VitaminC.png"
+embed_color = 0xffff00
+pronouns = "genderfluid"
+author = "@rvtar34"
+coordinates = {x = 206, y = 106}
+table = "nonperiodics.png"
+
+["Potassium Nitrate"]
+atomic_number = -18
+symbol = 'KNO₃'
+path = "sliced/Potassium Nitrate.png"
+embed_color = 0xe5e5e5
+pronouns = "she/they"
+author = "@ciaaik"
+coordinates = {x = 255, y = 106}
+table = "nonperiodics.png"
+
+[Magic]
+atomic_number = -19
+symbol = 'Ma'
+path = "sliced/Magic.png"
+embed_color = 0x4387B7
+pronouns = "unknown"
+author = "@toonsandwich"
+coordinates = {x = 304, y = 106}
+table = "nonperiodics.png"
+
+["Strange Matter"]
+atomic_number = -1
+symbol = 'Ⓢ'
+path = "sliced/StrangeMatter.png"
+embed_color = 0x51FF65
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 362, y = 97}
+table = "nonperiodics.png"
+
+[Water]
+atomic_number = -1
+symbol = "H₂O"
+path = "sliced/Water.png"
+embed_color = 0xA8DAFF
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 745, y = 106}
+table = "nonperiodics.png"
+
+[Earth]
+atomic_number = -1
+symbol = "🜃"
+path = "sliced/Earth.png"
+embed_color = 0x6B803F
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 794, y = 106}
+table = "nonperiodics.png"
+
+["Vandentoru Fundament"]
+atomic_number = -1
+symbol = "Vf"
+path = "sliced/VandentoruFundament.png"
+embed_color = 0xFFFFFF
+pronouns = "it/its"
+author = "@sciphonpylon"
+coordinates = {x = 843, y = 106}
+table = "nonperiodics.png"
+
+["Osmium Tetroxide"]
+atomic_number = -1
+symbol = "OsO₄"
+path = "sliced/OsmiumTetroxide.png"
+embed_color = 0xE5D786
+pronouns = "he/him"
+author = "@lotus-and-pkmn"
+coordinates = {x = 10, y = 155}
+table = "nonperiodics.png"
+
+["Deoxyribonucleic Acid"]
+atomic_number = -1
+symbol = "DNA"
+path = "sliced/DNA.png"
+embed_color = 0xffffe5
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 59, y = 155}
+table = "nonperiodics.png"
+
+["Hydrogen Superoxide"]
+atomic_number = -1
+symbol = "HO₂"
+path = "sliced/HO2.png"
+embed_color = 0xCDDAFF
+pronouns = "she/her"
+author = "@elementcattos"
+coordinates = {x = 108, y = 155}
+table = "nonperiodics.png"
+
+[Ozone]
+atomic_number = -1
+symbol = "O₃"
+path = "sliced/Ozone.png"
+pronouns = "she/her"
+author = "@elementcattos"
+coordinates = {x = 157, y = 155}
+table = "nonperiodics.png"
+embed_color = 0x0094FF
+
+[Givanium]
+atomic_number = -1
+symbol = "Gv"
+path = "sliced/Givanium.png"
+pronouns = "unknown"
+author = "@brobietumbles"
+coordinates = {x = 206, y = 155}
+table = "nonperiodics.png"
+embed_color = 0x00CE18
+
+["Frozen Mercury"]
+atomic_number = -1
+symbol = "Hg"
+path = "sliced/FrozenMercury.png"
+pronouns = "she/her"
+author = "@elementcattos"
+coordinates = {x = 255, y = 155}
+table = "nonperiodics.png"
+embed_color = 0xA0A0A0
+
+["Hydroldorochloflonitroxyphosplattungsten Carbide"]
+atomic_number = -1
+symbol = "C₃₀H₃₄AuBClF₃N₆O₂P₂PtW"
+path = "sliced/C30H34AuBClF3N6O2P2PtW.png"
+pronouns = "she/her"
+author = "@starri-cosmikat"
+coordinates = {x = 304, y = 155}
+table = "nonperiodics.png"
+embed_color = 0xFFFFFF
+
+["Evaporated Mercury"]
+atomic_number = -1
+symbol = "Hg"
+path = "sliced/EvaporatedMercury.png"
+pronouns = "none"
+author = "@elementcattos"
+coordinates = {x = 353, y = 155}
+table = "nonperiodics.png"
+embed_color = 0xBFFFFF
+
+["Table Sugar"]
+atomic_number = -1
+symbol = "C₁₂H₂₂O₁₁"
+path = "sliced/TableSugar.png"
+pronouns = "she/her*"
+author = "@nontheanon"
+coordinates = {x = 794, y = 155}
+table = "nonperiodics.png"
+embed_color = 0xc0c0c0
+
+["Molten Iron"]
+atomic_number = -1
+symbol = "Fe"
+path = "sliced/MoltenIron.png"
+pronouns = "genderfluid"
+author = "@elementcattos"
+coordinates = {x = 10, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xFFFF00
+
+["Supercooled Iron"]
+atomic_number = -1
+symbol = "Fe"
+path = "sliced/SupercooledIron.png"
+pronouns = "none"
+author = "@elementcattos"
+coordinates = {x = 59, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xE8D8FF
+
+["Crude Oil"]
+atomic_number = -1
+symbol = "~C**n**H(2**n**+2)"
+path = "sliced/Alkane.png"
+pronouns = "she/her"
+author = "@sciphonpylon"
+coordinates = {x = 108, y = 204}
+table = "nonperiodics.png"
+embed_color = 0x572B15
+
+[Capsaicin]
+atomic_number = -1
+symbol = "C₁₈H₂₇NO₃"
+path = "sliced/Capsaicin.png"
+pronouns = "she/her"
+author = "@sciphonpylon"
+coordinates = {x = 157, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xB20000
+
+[Menthol]
+atomic_number = -1
+symbol = "C₁₀H₂₀O"
+path = "sliced/Menthol.png"
+pronouns = "they/them"
+author = "@sciphonpylon"
+coordinates = {x = 206, y = 204}
+table = "nonperiodics.png"
+embed_color = 0x61AA0E
+
+[Brimstone]
+atomic_number = -1
+symbol = "🜏 "
+path = "sliced/Brimstone.png"
+pronouns = "she/her"
+author = "@elementcattos"
+coordinates = {x = 255, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xff0000
+
+["Amalgam"]
+atomic_number = -1
+symbol = "Al×Hg"
+path = "sliced/Amalgam.png"
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 304, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xB8C2CB
+
+["Soul Matter"]
+atomic_number = -1
+symbol = "So"
+path = "sliced/SoKirb.png"
+pronouns = "unknown"
+author = "@sciphonpylon"
+coordinates = {x = 353, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xFF6A00
+
+["Dream Matter"]
+atomic_number = -1
+symbol = "Dr"
+path = "sliced/DrKirb.png"
+pronouns = "unknwon"
+author = "@sciphonpylon"
+coordinates = {x = 402, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xFFFF42
+
+["Chaos"]
+atomic_number = -1
+symbol = "Ch"
+path = "sliced/ChKirb.png"
+pronouns = "unknown"
+author = "@sciphonpylon"
+coordinates = {x = 451, y = 204}
+table = "nonperiodics.png"
+embed_color = 0x7F0000
+
+["Heart Matter"]
+atomic_number = -1
+symbol = "Hr"
+path = "sliced/HrKirb.png"
+pronouns = "unknown"
+author = "@sciphonpylon"
+coordinates = {x = 500, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xe598cc
+
+["Dark Matter (Kirby)"]
+atomic_number = -1
+symbol = "Dm"
+path = "sliced/DmKirb.png"
+pronouns = "unknown"
+author = "@sciphonpylon"
+coordinates = {x = 549, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xFF9400
+
+["Zero"]
+atomic_number = -1
+symbol = "Ze"
+path = "sliced/ZeKirb.png"
+pronouns = "unknown"
+author = "@sciphonpylon"
+coordinates = {x = 598, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xFF0000
+
+["Propulsion Gel"]
+atomic_number = -1
+symbol = "Ap_P"
+path = "sliced/PropGel.png"
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 647, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xFF6A00
+
+["Repulsion Gel"]
+atomic_number = -1
+symbol = "Ap_R"
+path = "sliced/RepGel.png"
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 696, y = 204}
+table = "nonperiodics.png"
+embed_color = 0x0094FF
+
+["Conversion Gel"]
+atomic_number = -1
+symbol = "Ap_C"
+path = "sliced/ConvGel.png"
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 745, y = 204}
+table = "nonperiodics.png"
+embed_color = 0xe5e2dd
+
+["Blended Gel"]
+atomic_number = -1
+symbol = "Ap_OH"
+path = "sliced/BlendGel.png"
+pronouns = "unknown"
+author = "@elementcattos"
+coordinates = {x = 794, y = 204}
+table = "nonperiodics.png"
+embed_color = 0x85A6BB
+
+# Extras
 
 [Pukicho]
 atomic_number = -1
@@ -1089,10 +1563,10 @@ embed_color = 0xFFFF80
 pronouns = "he/they"
 author = "@pukicho"
 
-[Bungy]
-atomic_number = -2
-symbol = "Bu"
-path = "bungy.png"
-embed_color = 0xFFFFFF
-pronouns = "he/him"
-author = "@sciphonpylon"
+[Brombium]
+atomic_number = -3
+symbol = "Bb"
+path = "brombus.gif"
+embed_color = 0xFF0000
+pronouns = "unknown"
+author = "@nontheanon, @raxdflipnote (YT)"

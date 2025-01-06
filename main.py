@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import numpy as np
 import json
 import html.parser
 import urllib.request
@@ -22,13 +23,14 @@ ELEMENT_SCHEMA: dict[str, type | dict[Self]] = {
     "atomic_number": int,
     "symbol": str,
     "embed_color": int,
-    "path": str,
     "pronouns": str,
-    "author": str
+    "author": str,
+    "path": str
 }
 
 ELEMENT_SCHEMA_OPTIONAL: dict[str, type | dict[Self]] = {
     "coordinates": {"x": int, "y": int},
+    "table": str,
 }
 
 def check_schema(obj: dict, schema: dict, optional: dict | None = None) -> list[str]:
@@ -147,6 +149,7 @@ class Bot(commands.Bot):
         self.elements_by_atomic_number = {}
         self.elements_by_symbol = {}
         self.elements_by_name = {}
+        self.table_cache = {}
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
@@ -167,11 +170,18 @@ class Bot(commands.Bot):
         self.load_elements()
         print("Ready!")
     
+    def cached_open(self, path):
+        if path not in self.table_cache:
+            with Image.open(path) as im:
+                self.table_cache[path] = im.copy()
+        return self.table_cache[path].copy()
+
     def load_elements(self):
         print("Loading elements...")
         self.elements_by_name = {}
         self.elements_by_atomic_number = {}
         self.elements_by_symbol = {}
+        self.table_cache = {}
         
     
         with open("elements.toml", "rb") as f:
@@ -179,16 +189,23 @@ class Bot(commands.Bot):
         for name, raw_element in raw_elements.items():
             things_wrong = check_schema(raw_element, ELEMENT_SCHEMA, ELEMENT_SCHEMA_OPTIONAL)
             assert not len(things_wrong), f"Element `{name}` has a malformed entry!\n" + "\n".join(things_wrong)
+            table = self.table
+            if "table" in raw_element:
+                table = self.cached_open(Path("elements") / raw_element['table'])
             if "coordinates" in raw_element:
                 coords = raw_element["coordinates"]
                 # Slice the element from the table and save it
-                icon = self.table.crop((
+                icon = table.crop((
                     coords["x"] - 1, coords["y"] - 1,
                     coords["x"] + config.element_size[0] + 1, coords["y"] + config.element_size[1] + 1
                 ))
                 icon.save(Path("elements") / raw_element['path'], format = "PNG")
             with Image.open(Path("elements") / raw_element['path']) as im:
-                icon = im.copy()
+                frame_count = getattr(im, "n_frames", 1)
+                icon = []
+                for i in range(frame_count):
+                    im.seek(i)
+                    icon.append((im.copy(), im.info.get("duration", 200)))
             element = Element(
                 name,
                 raw_element["symbol"],
@@ -201,8 +218,17 @@ class Bot(commands.Bot):
             self.elements_by_name[name.lower()] = element
             if element.atomic_number is not None and element.atomic_number >= 0:
                 self.elements_by_atomic_number[element.atomic_number] = element
-            if element.symbol is not None:
+            if element.symbol != "???":
                 self.elements_by_symbol[element.symbol.lower()] = element
+        print("Generating Omnium...")        
+        omnium = np.array([el.icon[0][0].convert("RGB") for el in self.elements_by_atomic_number.values()], dtype=np.uint8)
+        omnium = np.average(omnium, axis = 0).astype(np.uint8)
+        omnium = Image.fromarray(omnium)
+        omnium_embed = np.array([(*el.embed_color.to_bytes(3, "big"), ) for el in self.elements_by_atomic_number.values()], dtype=np.uint8)
+        omnium_embed = np.average(omnium_embed, axis = 0).astype(int)
+        omnium_embed = int(omnium_embed[0]) << 16 | int(omnium_embed[1]) << 8 | int(omnium_embed[2])
+        omnium = Element("Omnium", "???", -1, [[omnium, 200]], "any/all", omnium_embed, "@everyone")
+        self.elements_by_name["omnium"] = omnium
         print("Loaded elements!")
         
     

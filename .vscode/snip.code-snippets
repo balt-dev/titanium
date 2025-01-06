@@ -1,0 +1,31 @@
+{
+	"Element": {
+		"scope": "toml",
+		"prefix": "el",
+		"body": [
+			"[$1]",
+			"atomic_number = $2",
+			"symbol = \"$3\"",
+			"path = \"sliced/$4.png\"",
+			"pronouns = \"$5\"",
+			"author = \"@$6\"",
+			"coordinates = {x = $7, y = $8}",
+			"embed_color = 0x$9"
+		]
+	},
+	"Compound": {
+		"scope": "toml",
+		"prefix": "ne",
+		"body": [
+			"[$1]",
+			"atomic_number = -1",
+			"symbol = \"$2\"",
+			"path = \"sliced/$3.png\"",
+			"pronouns = \"$4\"",
+			"author = \"@$5\"",
+			"coordinates = {x = $6, y = $7}",
+			"table = \"nonperiodics.png\"",
+			"embed_color = 0x$8"
+		]
+	}
+}
