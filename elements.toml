@@ -1149,7 +1149,7 @@ symbol = "~RCOH"
 path = "sliced/Alcohol.png"
 table = "nonperiodics.png"
 embed_color = 0xFFC575
-pronouns = "she/they"
+pronouns = "he/they"
 author = "@sciphonpylon"
 coordinates = {x = 255, y = 57}
 
