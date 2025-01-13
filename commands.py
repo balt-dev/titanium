@@ -70,18 +70,22 @@ class CommandCog(commands.Cog):
                 emb.add_field(name="Atomic Number", value=element.atomic_number)
             emb.add_field(name="Pronouns", value=element.pronouns)
             emb.add_field(name="Author", value=element.author, inline = False)
-            path = hex(hash(element.name)) + ".gif"
-            emb.set_image(url="attachment://" + path)
             icon = tuple(icon[0].resize(((config.element_size[0] + 2) * config.icon_scale, (config.element_size[1] + 2) * config.icon_scale), Image.Resampling.NEAREST) for icon in element.icon)
             buf = io.BytesIO()
-            icon[0].save(
-                buf,
-                format = "GIF",
-                save_all = True,
-                append_images = icon[1:],
-                duration = [i[1] for i in element.icon]
-            )
+            if len(element.icon) > 1:
+                path = hex(hash(element.name)) + ".gif"
+                icon[0].save(
+                    buf,
+                    format = "GIF",
+                    save_all = True,
+                    append_images = icon[1:],
+                    duration = [i[1] for i in element.icon]
+                )
+            else:
+                path = hex(hash(element.name)) + ".png"
+                icon[0].save(buf, format = "PNG")
             buf.seek(0)
+            emb.set_image(url="attachment://" + path)
             file = discord.File(buf, path)
             return await ctx.reply(embed=emb, files=[file])
 
