@@ -1570,3 +1570,11 @@ path = "brombus.gif"
 embed_color = 0xFF0000
 pronouns = "unknown"
 author = "@nontheanon, @raxdflipnote (YT)"
+
+["Scandium (Lit)"]
+atomic_number = -1
+symbol = "Sc*"
+path = "lit_scandium.png"
+embed_color = 0xFFFFFF
+pronouns = "he/him"
+author = "@mobropro, @baltdev"
