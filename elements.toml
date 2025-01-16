@@ -504,7 +504,7 @@ path = "sliced/Xenon.png"
 coordinates = {x = 891, y = 344}
 embed_color = 0x4B56EC
 pronouns = "xe/xem"
-author = "@elementcattos"
+author = "@elementcattos, @sciphonpylon"
 
 [Cesium]
 atomic_number = 55
@@ -1578,3 +1578,11 @@ path = "lit_scandium.png"
 embed_color = 0xFFFFFF
 pronouns = "he/him"
 author = "@mobropro, @baltdev"
+
+["Xenon (Old)"]
+atomic_number = -54
+symbol = "Xe*"
+path = "xenon_old.png"
+embed_color = 0x4B56EC
+pronouns = "xe/xem"
+author = "@elementcattos"
