@@ -40,9 +40,15 @@ class CommandCog(commands.Cog):
                 file = discord.File(buf, "table.png")
                 emb.set_image(url="attachment://table.png")
                 return await ctx.reply(embed=emb, files=[file])
+            # todo: don't hardcode this maybe
             if query == "nonperiodic":
                 emb = discord.Embed(title="The Non-Purriodic Table")
                 file = discord.File("elements/nonperiodics.png", "table.png")
+                emb.set_image(url="attachment://table.png")
+                return await ctx.reply(embed=emb, files=[file])
+            if query == "genderswap":
+                emb = discord.Embed(title="The Genderswapped Purriodic Table")
+                file = discord.File("elements/genderswap.png", "table.png")
                 emb.set_image(url="attachment://table.png")
                 return await ctx.reply(embed=emb, files=[file])
             # Parse the element's name

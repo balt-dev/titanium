@@ -1586,3 +1586,11 @@ path = "xenon_old.png"
 embed_color = 0x4B56EC
 pronouns = "xe/xem"
 author = "@elementcattos"
+
+[Sciphonium]
+atomic_number = -1
+symbol = "Sp"
+path = "sciphonium-icon.png"
+embed_color = 0xFFFF00
+pronouns = "she/her"
+author = "@sciphonpylon"
