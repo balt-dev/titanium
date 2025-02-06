@@ -76,14 +76,15 @@ class CommandCog(commands.Cog):
             pronouns = element.pronouns
             if genderswapped and "/" in pronouns:
                 parts = pronouns.split("/")
-                table = {"he": "she", "him": "her", "she": "he", "her": "him"}
+                table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm"}
                 pronouns = "/".join(table.get(part, part) for part in parts)
             emb.add_field(name="Pronouns", value=pronouns)
             emb.add_field(name="Author", value=element.author, inline = False)
             buf = io.BytesIO()
             icon.save(buf, format = "PNG")
             buf.seek(0)
-            path = f"{element.name}.png"
+            raw_name = element.name.replace(" ", "")
+            path = f"{raw_name}.png"
             emb.set_image(url=f"attachment://{path}")
             file = discord.File(buf, path)
             return await ctx.reply(embed=emb, files=[file])

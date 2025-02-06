@@ -207,7 +207,10 @@ class Bot(commands.Bot):
             if element.atomic_number is not None:
                 self.elements_by_atomic_number[element.atomic_number] = element
             if element.symbol != "???":
-                self.elements_by_symbol[element.symbol.lower()] = element
+                raw_symbol = element.symbol.lower()
+                for a, b in zip([*"₀₁₂₃₄₅₆₇₈₉", "ⓢ", "**n**", "×"], [*"0123456789", "(s)", "n", "*"]):
+                    raw_symbol = raw_symbol.replace(a, b)
+                self.elements_by_symbol[raw_symbol] = element
         print("Generating Omnium...")        
         omnium = np.array([self.get_element_icon(el).convert("RGB") for el in self.elements_by_atomic_number.values()], dtype=np.uint8)
         omnium = np.average(omnium, axis = 0).astype(np.uint8)
