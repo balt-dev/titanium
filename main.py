@@ -163,6 +163,7 @@ class Bot(commands.Bot):
         )
         def cb(image: Image.Image):
             nonlocal self
+            image.save("elements/normal.png")
             self.tables["normal"] = image
         self.parser = ImageScraper(cb)
         self.sync_image()

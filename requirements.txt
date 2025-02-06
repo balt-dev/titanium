@@ -1,5 +1,4 @@
 pytumblr==0.1.*
 discord.py==2.*
-Pillow==11.*
-audioop-lts
+Pillow==10.*
 numpy

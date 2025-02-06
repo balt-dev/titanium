@@ -1,5 +1,3 @@
 /auth.py
 /.venv
-/elements/sliced/*
-!/elements/sliced/.gitkeep
 /__pycache__

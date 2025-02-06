@@ -3,11 +3,11 @@ A simple Discord bot made for the [elementcattos](https://elementcattos.tumblr.c
 
 Takes some code from [ROBOT IS CHILL](https://github.com/balt-dev/ROBOT-IS-CHILL).
 
-Licensed under the GPL. See `LICENSE.txt`.
+Everything in this repostiory __except for the files in the `elements` directory ending with the file extension `.png`__ are licensed under the GPL. See `LICENSE.txt`.
 
 ## Setup
 
-1. `python -m venv .venv`
+1. `python3.11 -m venv .venv`
 2. `source .venv/bin/activate` or `./.venv/bin/Activate.ps1`
 3. `pip install -r requirements.txt`
 4. Copy `auth_template.py` to `auth.py` and fill the respective fields
