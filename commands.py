@@ -30,27 +30,21 @@ class CommandCog(commands.Cog):
         Specifying no element will show the entire table.
         """
         async with ctx.typing():
-            if self.bot.table is None:
-                self.bot.sync_image()
+            query = query.strip()
             if query is None:
-                emb = discord.Embed(title="The Purriodic Table")
+                query = "normal"
+            if query in self.bot.tables:
+                emb = discord.Embed()
                 buf = io.BytesIO()
-                self.bot.table.save(buf, format="PNG")
+                self.bot.tables[query].save(buf, format="PNG")
                 buf.seek(0)
                 file = discord.File(buf, "table.png")
                 emb.set_image(url="attachment://table.png")
                 return await ctx.reply(embed=emb, files=[file])
-            # todo: don't hardcode this maybe
-            if query == "nonperiodic":
-                emb = discord.Embed(title="The Non-Purriodic Table")
-                file = discord.File("elements/nonperiodics.png", "table.png")
-                emb.set_image(url="attachment://table.png")
-                return await ctx.reply(embed=emb, files=[file])
-            if query == "genderswap":
-                emb = discord.Embed(title="The Genderswapped Purriodic Table")
-                file = discord.File("elements/genderswap.png", "table.png")
-                emb.set_image(url="attachment://table.png")
-                return await ctx.reply(embed=emb, files=[file])
+            genderswapped = False
+            if query.startswith("--genderswapped"):
+                query = query.removeprefix("--genderswapped").strip()
+                genderswapped = True
             # Parse the element's name
             query = query.lower()
             if query in self.bot.elements_by_name:
@@ -66,32 +60,31 @@ class CommandCog(commands.Cog):
                 element = self.bot.elements_by_atomic_number[atomic_number]
             else:
                 query = query.replace("`", "").replace("\n", "")[:32]
-                return await ctx.error(f"No element found with name, symbol, or atomic number `{query}`!")
+                return await ctx.error(f"No element found with name, symbol, or atomic number `{query}`!")   
+
+            icon = self.bot.get_element_icon(element, genderswapped)
+            width, height = icon.size
+            icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
+
             emb = discord.Embed (
                 color=element.embed_color,
                 title=element.name
             )
             emb.add_field(name="Symbol", value=element.symbol)
-            if element.atomic_number >= 0:
+            if element.atomic_number is not None:
                 emb.add_field(name="Atomic Number", value=element.atomic_number)
-            emb.add_field(name="Pronouns", value=element.pronouns)
+            pronouns = element.pronouns
+            if genderswapped and "/" in pronouns:
+                parts = pronouns.split("/")
+                table = {"he": "she", "him": "her", "she": "he", "her": "him"}
+                pronouns = "/".join(table.get(part, part) for part in parts)
+            emb.add_field(name="Pronouns", value=pronouns)
             emb.add_field(name="Author", value=element.author, inline = False)
-            icon = tuple(icon[0].resize(((config.element_size[0] + 2) * config.icon_scale, (config.element_size[1] + 2) * config.icon_scale), Image.Resampling.NEAREST) for icon in element.icon)
             buf = io.BytesIO()
-            if len(element.icon) > 1:
-                path = hex(hash(element.name)) + ".gif"
-                icon[0].save(
-                    buf,
-                    format = "GIF",
-                    save_all = True,
-                    append_images = icon[1:],
-                    duration = [i[1] for i in element.icon]
-                )
-            else:
-                path = hex(hash(element.name)) + ".png"
-                icon[0].save(buf, format = "PNG")
+            icon.save(buf, format = "PNG")
             buf.seek(0)
-            emb.set_image(url="attachment://" + path)
+            path = f"{element.name}.png"
+            emb.set_image(url=f"attachment://{path}")
             file = discord.File(buf, path)
             return await ctx.reply(embed=emb, files=[file])
 

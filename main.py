@@ -20,16 +20,16 @@ import config
 import auth
 
 ELEMENT_SCHEMA: dict[str, type | dict[Self]] = {
-    "atomic_number": int,
     "symbol": str,
     "embed_color": int,
     "pronouns": str,
     "author": str,
-    "path": str
 }
 
 ELEMENT_SCHEMA_OPTIONAL: dict[str, type | dict[Self]] = {
+    "atomic_number": int,
     "coordinates": {"x": int, "y": int},
+    "path": str,
     "table": str,
 }
 
@@ -62,11 +62,8 @@ class Element:
     symbol: str
     """The element's symbol."""
 
-    atomic_number: int
+    atomic_number: int | None
     """The element's atomic number."""
-
-    icon: Image.Image
-    """The element's icon."""
 
     pronouns: str # chemistry if it was WOKE
     """The element's pronouns."""
@@ -76,6 +73,9 @@ class Element:
 
     author: str
     """The author of the element's design."""
+
+    image: Image.Image | tuple[str, tuple[int, int]]
+    """The image, or table coordinates, of the element."""
 
 class Context(commands.Context):
     silent: bool = False
@@ -137,7 +137,7 @@ class ImageScraper(html.parser.HTMLParser):
 class Bot(commands.Bot):
     client: pytumblr.TumblrRestClient
     parser: ImageScraper
-    table: Image.Image
+    tables: dict[str, Image.Image]
     elements_by_atomic_number: dict[int, Element]
     elements_by_symbol: dict[str, Element]
     elements_by_name: dict[str, Element]
@@ -145,11 +145,10 @@ class Bot(commands.Bot):
     def __init__(self, *args, **kwargs):
         self.client = None
         self.parser = None
-        self.table = None
+        self.tables = {}
         self.elements_by_atomic_number = {}
         self.elements_by_symbol = {}
         self.elements_by_name = {}
-        self.table_cache = {}
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
@@ -164,73 +163,69 @@ class Bot(commands.Bot):
         )
         def cb(image: Image.Image):
             nonlocal self
-            self.table = image
+            self.tables["normal"] = image
         self.parser = ImageScraper(cb)
         self.sync_image()
+        with Image.open("elements/nonperiodics.png") as im:
+            im.load()
+            self.tables["nonperiodics"] = im
+        with Image.open("elements/genderswap.png") as im:
+            im.load()
+            self.tables["genderswap"] = im
         self.load_elements()
         print("Ready!")
-    
-    def cached_open(self, path):
-        if path not in self.table_cache:
-            with Image.open(path) as im:
-                self.table_cache[path] = im.copy()
-        return self.table_cache[path].copy()
 
     def load_elements(self):
         print("Loading elements...")
         self.elements_by_name = {}
         self.elements_by_atomic_number = {}
-        self.elements_by_symbol = {}
-        self.table_cache = {}
-        
+        self.elements_by_symbol = {}        
     
         with open("elements.toml", "rb") as f:
             raw_elements = tomllib.load(f)
         for name, raw_element in raw_elements.items():
             things_wrong = check_schema(raw_element, ELEMENT_SCHEMA, ELEMENT_SCHEMA_OPTIONAL)
             assert not len(things_wrong), f"Element `{name}` has a malformed entry!\n" + "\n".join(things_wrong)
-            table = self.table
             if "table" in raw_element:
-                table = self.cached_open(Path("elements") / raw_element['table'])
-            if "coordinates" in raw_element:
-                coords = raw_element["coordinates"]
-                # Slice the element from the table and save it
-                icon = table.crop((
-                    coords["x"] - 1, coords["y"] - 1,
-                    coords["x"] + config.element_size[0] + 1, coords["y"] + config.element_size[1] + 1
-                ))
-                icon.save(Path("elements") / raw_element['path'], format = "PNG")
-            with Image.open(Path("elements") / raw_element['path']) as im:
-                frame_count = getattr(im, "n_frames", 1)
-                icon = []
-                for i in range(frame_count):
-                    im.seek(i)
-                    icon.append((im.copy(), im.info.get("duration", 200)))
+                assert "coordinates" in raw_element, F"Element `{name}` has a table, but no coordinates!"
+                image = (raw_element["table"], (raw_element["coordinates"]["x"], raw_element["coordinates"]["y"]))
+            else:
+                assert "path" in raw_element, F"Element `{name}` has no table or path!"
+                with Image.open(Path("elements") / raw_element["path"]) as im:
+                    im.load()
+                    image = im
             element = Element(
                 name,
                 raw_element["symbol"],
-                raw_element["atomic_number"],
-                icon,
+                raw_element.get("atomic_number"),
                 raw_element["pronouns"],
                 raw_element["embed_color"],
                 raw_element["author"],
+                image
             )
             self.elements_by_name[name.lower()] = element
-            if element.atomic_number is not None and element.atomic_number >= 0:
+            if element.atomic_number is not None:
                 self.elements_by_atomic_number[element.atomic_number] = element
             if element.symbol != "???":
                 self.elements_by_symbol[element.symbol.lower()] = element
         print("Generating Omnium...")        
-        omnium = np.array([el.icon[0][0].convert("RGB") for el in self.elements_by_atomic_number.values()], dtype=np.uint8)
+        omnium = np.array([self.get_element_icon(el).convert("RGB") for el in self.elements_by_atomic_number.values()], dtype=np.uint8)
         omnium = np.average(omnium, axis = 0).astype(np.uint8)
         omnium = Image.fromarray(omnium)
         omnium_embed = np.array([(*el.embed_color.to_bytes(3, "big"), ) for el in self.elements_by_atomic_number.values()], dtype=np.uint8)
         omnium_embed = np.average(omnium_embed, axis = 0).astype(int)
         omnium_embed = int(omnium_embed[0]) << 16 | int(omnium_embed[1]) << 8 | int(omnium_embed[2])
-        omnium = Element("Omnium", "???", -1, [[omnium, 200]], "any/all", omnium_embed, "@everyone")
+        omnium = Element("Omnium", "???", None, "any/all", omnium_embed, "@everyone", omnium)
         self.elements_by_name["omnium"] = omnium
         print("Loaded elements!")
         
+    def get_element_icon(self, el: Element, genderswap = False):
+        if type(el.image) is tuple:
+            el_table = el.image[0]
+            if genderswap and el_table == "normal":
+                el_table = "genderswap"
+            return self.tables[el_table].crop((el.image[1][0] - 1, el.image[1][1] - 1, el.image[1][0] + config.element_size[0] + 1, el.image[1][1] + config.element_size[1] + 1))
+        return el.image
     
     def sync_image(self):
         print("Loading image...")
