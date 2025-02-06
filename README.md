@@ -3,7 +3,7 @@ A simple Discord bot made for the [elementcattos](https://elementcattos.tumblr.c
 
 Takes some code from [ROBOT IS CHILL](https://github.com/balt-dev/ROBOT-IS-CHILL).
 
-Everything in this repostiory __except for the files in the `elements` directory ending with the file extension `.png`__ are licensed under the GPL. See `LICENSE.txt`.
+Everything in this repostiory __except for the files in the `elements` directory ending with the file extension `.png`__ is licensed under the GPL. See `LICENSE.txt`.
 
 ## Setup
 
