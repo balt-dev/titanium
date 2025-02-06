@@ -104,15 +104,13 @@ class CommandCog(commands.Cog):
             return await ctx.reply("Reloaded!")
 
     @commands.group()
-    @commands.is_owner()
     async def toml(self, ctx: Context):
-        """Sends or recieves elements.toml. Owner-only."""
+        """Sends or recieves elements.toml."""
         ...
     
     @toml.command()
-    @commands.is_owner()
     async def get(self, ctx: Context):
-        """Sends elements.toml. Owner only."""
+        """Sends elements.toml."""
         return await ctx.reply(files = [discord.File("elements.toml")])
     
     @commands.is_owner()
