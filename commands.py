@@ -76,7 +76,7 @@ class CommandCog(commands.Cog):
             pronouns = element.pronouns
             if genderswapped and "/" in pronouns:
                 parts = pronouns.split("/")
-                table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm"}
+                table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?"}
                 pronouns = "/".join(table.get(part, part) for part in parts)
             emb.add_field(name="Pronouns", value=pronouns)
             emb.add_field(name="Author", value=element.author, inline = False)

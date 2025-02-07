@@ -164,15 +164,8 @@ class Bot(commands.Bot):
         def cb(image: Image.Image):
             nonlocal self
             image.save("elements/normal.png")
-            self.tables["normal"] = image
         self.parser = ImageScraper(cb)
         self.sync_image()
-        with Image.open("elements/nonperiodics.png") as im:
-            im.load()
-            self.tables["nonperiodics"] = im
-        with Image.open("elements/genderswap.png") as im:
-            im.load()
-            self.tables["genderswap"] = im
         self.load_elements()
         print("Ready!")
 
@@ -184,6 +177,11 @@ class Bot(commands.Bot):
     
         with open("elements.toml", "rb") as f:
             raw_elements = tomllib.load(f)
+        for name, path in raw_elements["tables"].items():
+            with Image.open(Path("elements") / path) as im:
+                im.load()
+                self.tables[name] = im
+        del raw_elements["tables"]
         for name, raw_element in raw_elements.items():
             things_wrong = check_schema(raw_element, ELEMENT_SCHEMA, ELEMENT_SCHEMA_OPTIONAL)
             assert not len(things_wrong), f"Element `{name}` has a malformed entry!\n" + "\n".join(things_wrong)

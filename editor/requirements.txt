@@ -1,0 +1,3 @@
+imgui[glfw]
+numpy
+Pillow
