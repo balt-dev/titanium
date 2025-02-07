@@ -1548,7 +1548,7 @@ coordinates = { x = 843, y = 253 }
 
 ["ABS"]
 table = "nonperiodics"
-symbol = "(C₈H₈)**x*•(C₄H₆)**y**•(C₃H₃N)**z**"
+symbol = "(C₈H₈)**x**•(C₄H₆)**y**•(C₃H₃N)**z**"
 pronouns = "she/they"
 author = "@sciphonpylon"
 embed_color = 0xFF0000
