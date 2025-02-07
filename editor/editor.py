@@ -146,7 +146,7 @@ class Editor:
         for (name, path), tex_id in zip(toml["tables"].items(), tex_ids):
             with Image.open(Path("..") / "elements" / path) as im:
                 self.create_image(im, tex_id)
-                self.tables[name] = Table (tex_id, im.copy(), Point(*im.size), path, [])
+                self.tables[name] = Table (tex_id, im.convert("RGB"), Point(*im.size), path, [])
         del toml["tables"]
         
         for name, data in toml.items():
@@ -223,6 +223,7 @@ class Editor:
         target_id = (min_el + offset) % len(self.table.elements)
         print(f"Closest to {min_el}, moving to {target_id}")
         target_el = self.table.elements[target_id]
+        self.active_element = target_el
         self.camera.ease_to(target_el.coordinates + Point(24, 24))
     
     def main_loop(self, dt: float):
@@ -292,7 +293,7 @@ class Editor:
 
         if self.colorpicking and world_mouse.within(Point(), Point(*self.table.actual_image.size)):
             print(f"Mouse position: {world_mouse}")
-            r, g, b, _ = self.table.actual_image.getpixel((world_mouse.x, world_mouse.y)) 
+            r, g, b = self.table.actual_image.getpixel((world_mouse.x, world_mouse.y)) 
             imgui.set_clipboard_text(f"#{r << 16 | g << 8 | b:06X}")
             self.colorpicking = False
         
@@ -365,20 +366,20 @@ class Editor:
                 self.active_element.coordinates = (world_mouse + self.drag_offset).floor()
 
     def edit_interface(self):
-        changed, new_name = imgui.input_text("Name", self.active_element.name)
+        changed, new_name = imgui.input_text(f"Name##{self.active_element.uuid}", self.active_element.name)
         if changed: self.active_element.name = new_name
         old_symbol = self.active_element.symbol
-        for a, b in zip("₀₁₂₃₄₅₆₇₈₉", "0123456789"):
+        for a, b in zip("₀₁₂₃₄₅₆₇₈₉•×", "0123456789+@"):
             old_symbol = old_symbol.replace(a, b)
-        changed, new_symbol = imgui.input_text("Symbol", old_symbol)
+        changed, new_symbol = imgui.input_text(f"Symbol##{self.active_element.uuid}", old_symbol)
         if changed: 
-            for a, b in zip("₀₁₂₃₄₅₆₇₈₉", "0123456789"):
+            for a, b in zip("₀₁₂₃₄₅₆₇₈₉•×", "0123456789+@"):
                 new_symbol = new_symbol.replace(b, a)
             self.active_element.symbol = new_symbol
-        changed, new_pronouns = imgui.input_text("Pronouns", self.active_element.pronouns)
+        changed, new_pronouns = imgui.input_text(f"Pronouns##{self.active_element.uuid}", self.active_element.pronouns)
         if changed: self.active_element.pronouns = new_pronouns
         r, g, b = self.active_element.embed_color.to_bytes(3, "big")
-        changed, new_color = imgui.color_edit3("Embed Color", r / 255, g / 255, b / 255)
+        changed, new_color = imgui.color_edit3(f"Embed Color##{self.active_element.uuid}", r / 255, g / 255, b / 255)
         if changed:
             r, g, b = new_color
             new_int = int(r * 255) << 16 | int(g * 255) << 8 | int(b * 255)
@@ -387,19 +388,19 @@ class Editor:
             if self.active_element.atomic_number is None:
                 self.active_element.atomic_number = 0
             imgui.same_line()
-            changed, new_number = imgui.input_int("##Atomic Number", self.active_element.atomic_number)
+            changed, new_number = imgui.input_int(f"##Atomic Number##{self.active_element.uuid}", self.active_element.atomic_number)
             if changed: self.active_element.atomic_number = new_number
         else:
             self.active_element.atomic_number = None
 
-        imgui.text("Authors")
+        imgui.text(f"Authors")
         imgui.indent()
         author_list = []
         for i, author in enumerate(self.active_element.authors):
-            changed, new_name = imgui.input_text(f"##{i}", author)
+            changed, new_name = imgui.input_text(f"##{self.active_element.uuid}.{i}.author", author)
             if changed: author = new_name
             imgui.same_line()
-            if not imgui.button(f"-##{i}"):
+            if not imgui.button(f"-##{self.active_element.uuid}.{i}"):
                 author_list.append(author)
 
         if imgui.button("+"):

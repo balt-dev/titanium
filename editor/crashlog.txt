@@ -1,13 +1,11 @@
 Traceback (most recent call last):
   File "/home/baltdev/Documents/titanium/editor/./main.py", line 24, in main
     editor.main_loop(dt)
-  File "/home/baltdev/Documents/titanium/editor/editor.py", line 238, in main_loop
+  File "/home/baltdev/Documents/titanium/editor/editor.py", line 239, in main_loop
     self.render_interface()
-  File "/home/baltdev/Documents/titanium/editor/editor.py", line 249, in render_interface
-    self.menu_bar()
-  File "/home/baltdev/Documents/titanium/editor/editor.py", line 452, in menu_bar
-    self.save()
-  File "/home/baltdev/Documents/titanium/editor/editor.py", line 448, in save
-    print(toml.buffer)
-          ^^^^^^^^^^^
-AttributeError: '_io.StringIO' object has no attribute 'buffer'
+  File "/home/baltdev/Documents/titanium/editor/editor.py", line 264, in render_interface
+    self.main_interface()
+  File "/home/baltdev/Documents/titanium/editor/editor.py", line 295, in main_interface
+    r, g, b = self.table.actual_image.getpixel((world_mouse.x, world_mouse.y))
+    ^^^^^^^
+ValueError: too many values to unpack (expected 3)
