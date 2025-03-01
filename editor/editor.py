@@ -45,6 +45,15 @@ class Point:
     def floor(self) -> Self:
         return Point(int(self.x), int(self.y))
 
+    def magnitude(self) -> float:
+        return math.sqrt(self.x ** 2 + self.y ** 2)
+    
+    def normalized(self) -> Self:
+        mag = self.magnitude()
+        if mag == 0.0:
+            return Point(0, 0)
+        return self / self.magnitude()
+
 @dataclass
 class Element:
     name: str
@@ -57,6 +66,7 @@ class Element:
     uuid: str = field(default_factory = uuid.uuid4)
 
 CAMERA_DAMPING = 0.001
+CAMERA_MOVE_TO_FACTOR = -math.log(CAMERA_DAMPING)
 CAMERA_SPEED = 10000
 ZOOM_EXP = 10000.0
 ZOOM_DECAY = 0.99
@@ -70,40 +80,17 @@ class Camera:
     zoom: float = 1
     target_zoom: float = 1
 
-    last_pos: Point = field(default_factory = Point)
-    last_dt: float = 0.01667
-    easing_time: float = 0
-    easing_start: Point | None = None
-    easing_target: Point | None = None
-
-    def ease_to(self, pos: Point):
-        self.vel = Point()
-        self.easing_time = 0
-        self.easing_start = self.pos
-        self.easing_target = pos
-
-    def release_easing(self):
-        if self.easing_target is None: return
-        self.easing_target = None
-        self.vel = (self.pos - self.last_pos) / self.last_dt
-
     def tick(self, dt: float):
-        self.zoom += (self.target_zoom - self.zoom) * (1 - ZOOM_EXP ** (-ZOOM_DECAY * dt))
-        self.last_pos = self.pos
-        self.last_dt = dt
-        if self.easing_target is not None:
-            self.accel = Point()
-            if self.easing_time > EASING_TIME:
-                self.pos = self.easing_target
-                self.easing_target = None
-                self.easing_start = None
-                return
-            self.pos = self.easing_start + (self.easing_target - self.easing_start) * (1 - 2 ** (-10 * self.easing_time / EASING_TIME))
-            self.easing_time += dt
-            return
         self.pos += self.vel * dt
         self.vel += self.accel * dt
         self.vel *= CAMERA_DAMPING ** dt
+        self.zoom += (self.target_zoom - self.zoom) * (1 - ZOOM_EXP ** (-ZOOM_DECAY * dt))
+
+    def move_to(self, pos: Point):
+        desired_movement = pos - self.pos
+        displacement = desired_movement.magnitude()
+        self.vel = desired_movement.normalized() * (CAMERA_MOVE_TO_FACTOR * displacement)
+        self.accel = Point(0, 0)
 
 @dataclass
 class Table:
@@ -177,16 +164,12 @@ class Editor:
             if self.io.want_text_input: return
             if key == glfw.KEY_UP or key == glfw.KEY_W:
                 self.camera.accel.y = 0 if action == glfw.RELEASE else -CAMERA_SPEED / self.camera.zoom
-                self.camera.release_easing()
             if key == glfw.KEY_LEFT or key == glfw.KEY_A:
                 self.camera.accel.x = 0 if action == glfw.RELEASE else -CAMERA_SPEED / self.camera.zoom
-                self.camera.release_easing()
             if key == glfw.KEY_DOWN or key == glfw.KEY_S:
                 self.camera.accel.y = 0 if action == glfw.RELEASE else CAMERA_SPEED / self.camera.zoom 
-                self.camera.release_easing()
             if key == glfw.KEY_RIGHT or key == glfw.KEY_D:
                 self.camera.accel.x = 0 if action == glfw.RELEASE else CAMERA_SPEED / self.camera.zoom
-                self.camera.release_easing()
             if key == glfw.KEY_COMMA and action == glfw.PRESS:
                 self.move_to_el(-1)
             if key == glfw.KEY_PERIOD and action == glfw.PRESS:
@@ -214,17 +197,21 @@ class Editor:
     def move_to_el(self, offset: int):
         min_dist = math.inf
         min_el = None
-        for i, el in enumerate(self.table.elements):
-            diff = el.coordinates - (self.camera.pos if self.camera.easing_target is None else self.camera.easing_target)
-            dist = math.sqrt(diff.x ** 2 + diff.y ** 2)
-            if dist < min_dist:
-                min_dist = dist
-                min_el = i
-        target_id = (min_el + offset) % len(self.table.elements)
-        print(f"Closest to {min_el}, moving to {target_id}")
-        target_el = self.table.elements[target_id]
+        if self.active_element is None:
+            for i, el in enumerate(self.table.elements):
+                dist = ((el.coordinates + Point(24, 24)) - self.camera.pos).magnitude()
+                if dist < min_dist:
+                    min_dist = dist
+                    min_el = i
+            target_id = (min_el + offset) % len(self.table.elements)
+            target_el = self.table.elements[target_id]
+        else:
+            for i, el in enumerate(self.table.elements):
+                if el.uuid == self.active_element.uuid:
+                    break
+            target_el = self.table.elements[(i + offset) % len(self.table.elements)]
         self.active_element = target_el
-        self.camera.ease_to(target_el.coordinates + Point(24, 24))
+        self.camera.move_to(target_el.coordinates + Point(24, 24))
     
     def main_loop(self, dt: float):
         self.camera.tick(dt)
@@ -468,7 +455,7 @@ class Editor:
                 self.active_element = None
                 self.active_table = table
                 if len(self.tables[table].elements):
-                    self.camera.ease_to(self.tables[table].elements[0].coordinates.copy)
+                    self.camera.move_to(self.tables[table].elements[0].coordinates.copy)
                 self.camera.vel = Point()
                 self.camera.target_zoom = 4
         imgui.pop_style_var(1)
