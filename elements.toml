@@ -1157,7 +1157,7 @@ coordinates = { x = 360, y = 99 }
 ["Water"]
 table = "nonperiodics"
 symbol = "H₂O"
-pronouns = "unknown"
+pronouns = "she/her"
 author = "@elementcattos"
 embed_color = 0xA8DAFF
 coordinates = { x = 745, y = 106 }
@@ -1357,7 +1357,7 @@ coordinates = { x = 549, y = 204 }
 ["Zero"]
 table = "nonperiodics"
 symbol = "Ze"
-pronouns = "unknown"
+pronouns = "it/its"
 author = "@sciphonpylon"
 embed_color = 0xFF0000
 coordinates = { x = 598, y = 204 }
@@ -1561,6 +1561,62 @@ pronouns = "unknown"
 author = "@elementcattos"
 embed_color = 0xE2CCFF
 coordinates = { x = 892, y = 253 }
+
+["Glucose"]
+table = "nonperiodics"
+symbol = "C₆H₁₂O₆"
+pronouns = "she/her"
+author = "@elementcattos"
+embed_color = 0xFFBCD5
+coordinates = { x = 206, y = 253 }
+
+["Table Salt"]
+table = "nonperiodics"
+symbol = "NaCl"
+pronouns = "she/her"
+author = "@elementcattos"
+embed_color = 0xFFFFFF
+coordinates = { x = 255, y = 253 }
+
+["Silica"]
+table = "nonperiodics"
+symbol = "SiO₂"
+pronouns = "he/her"
+author = "@elementcattos"
+embed_color = 0xFFF0CC
+coordinates = { x = 304, y = 253 }
+
+["Carbon Dioxide"]
+table = "nonperiodics"
+symbol = "CO₂"
+pronouns = "she/her"
+author = "@elementcattos"
+embed_color = 0x35394A
+coordinates = { x = 647, y = 253 }
+
+["Methane"]
+table = "nonperiodics"
+symbol = "CH₄"
+pronouns = "he/him"
+author = "@elementcattos"
+embed_color = 0x0003BE
+coordinates = { x = 696, y = 253 }
+
+["Zero Two"]
+table = "nonperiodics"
+symbol = "Ze₂"
+pronouns = "it/its"
+author = "@sciphonpylon"
+embed_color = 0xA61419
+coordinates = { x = 598, y = 253 }
+
+["Laughing Gas"]
+table = "nonperiodics"
+symbol = "N₂O"
+pronouns = "she/her"
+author = "@elementcattos"
+embed_color = 0x6DF9FA
+coordinates = { x = 745, y = 253 }
 
 
 ### genderswap ###
