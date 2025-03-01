@@ -1266,7 +1266,7 @@ author = "@elementcattos"
 embed_color = 0xFFFF00
 coordinates = { x = 10, y = 204 }
 
-["Supercooled Iron"]
+["Evaporated Iron"]
 table = "nonperiodics"
 symbol = "Fe**"
 pronouns = "none"
