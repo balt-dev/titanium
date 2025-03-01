@@ -1058,9 +1058,9 @@ author = "@sciphonpylon"
 embed_color = 0x3E55D8
 coordinates = { x = 206, y = 57 }
 
-["Alcohol"]
+["Ethanol"]
 table = "nonperiodics"
-symbol = "~RCOH"
+symbol = "C₂H₆O"
 pronouns = "he/they"
 author = "@sciphonpylon"
 embed_color = 0xFFC575
@@ -1512,7 +1512,7 @@ symbol = "Vo(T)"
 pronouns = "unknown"
 author = "@sciphonpylon"
 embed_color = 0xE1FF52
-coordinates = { x = 353, y = 253 }
+coordinates = { x = 451, y = 253 }
 
 ["Void Soul"]
 table = "nonperiodics"
@@ -1520,7 +1520,7 @@ symbol = "Vo(S)"
 pronouns = "unknown"
 author = "@sciphonpylon"
 embed_color = 0x003FFF
-coordinates = { x = 402, y = 253 }
+coordinates = { x = 500, y = 253 }
 
 ["Void"]
 table = "nonperiodics"
@@ -1528,7 +1528,7 @@ symbol = "Vo"
 pronouns = "unknown"
 author = "@sciphonpylon"
 embed_color = 0xFFFFFF
-coordinates = { x = 451, y = 253 }
+coordinates = { x = 549, y = 253 }
 
 ["Babium"]
 table = "nonperiodics"
@@ -1617,6 +1617,14 @@ pronouns = "she/her"
 author = "@elementcattos"
 embed_color = 0x6DF9FA
 coordinates = { x = 745, y = 253 }
+
+["Galinstan"]
+table = "nonperiodics"
+symbol = "GaInSn"
+pronouns = "he/him"
+author = "@sciphonpylon"
+embed_color = 0xE5DAAC
+coordinates = { x = 353, y = 252 }
 
 
 ### genderswap ###
