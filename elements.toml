@@ -1653,6 +1653,30 @@ author = "@sciphonpylon"
 embed_color = 0xE5DAAC
 coordinates = { x = 353, y = 253 }
 
+["Proton"]
+table = "nonperiodics"
+symbol = "+"
+pronouns = "none"
+author = "@elementcattos"
+embed_color = 0xEC86DC
+coordinates = { x = 10, y = 302 }
+
+["Neutron"]
+table = "nonperiodics"
+symbol = "+/-"
+pronouns = "none"
+author = "@elementcattos"
+embed_color = 0x808080
+coordinates = { x = 59, y = 302 }
+
+["Meson"]
+table = "nonperiodics"
+symbol = "<->"
+pronouns = "none"
+author = "@elementcattos"
+embed_color = 0x4CA1FC
+coordinates = { x = 108, y = 302 }
+
 
 ### genderswap ###
 

@@ -207,7 +207,7 @@ class Bot(commands.Bot):
                 self.elements_by_atomic_number[element.atomic_number] = element
             if element.symbol != "???":
                 raw_symbol = element.symbol.lower()
-                for a, b in zip([*"₀₁₂₃₄₅₆₇₈₉", "ⓢ", "**n**", "×"], [*"0123456789", "(s)", "n", "*"]):
+                for a, b in zip([*"₀₁₂₃₄₅₆₇₈₉", "ⓢ", "**n**", "×", "±", "↔"], [*"0123456789", "(s)", "n", "*", "+/-", "<->"]):
                     raw_symbol = raw_symbol.replace(a, b)
                 self.elements_by_symbol[raw_symbol] = element
         print("Generating Omnium...")        

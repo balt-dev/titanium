@@ -358,11 +358,11 @@ class Editor:
         changed, new_name = imgui.input_text(f"Name##{self.active_element.uuid}", self.active_element.name)
         if changed: self.active_element.name = new_name
         old_symbol = self.active_element.symbol
-        for a, b in zip("₀₁₂₃₄₅₆₇₈₉•×", "0123456789+@"):
+        for a, b in zip("₀₁₂₃₄₅₆₇₈₉•×", "0123456789.@"):
             old_symbol = old_symbol.replace(a, b)
         changed, new_symbol = imgui.input_text(f"Symbol##{self.active_element.uuid}", old_symbol)
         if changed: 
-            for a, b in zip("₀₁₂₃₄₅₆₇₈₉•×", "0123456789+@"):
+            for a, b in zip("₀₁₂₃₄₅₆₇₈₉•×", "0123456789.@"):
                 new_symbol = new_symbol.replace(b, a)
             self.active_element.symbol = new_symbol
         changed, new_pronouns = imgui.input_text(f"Pronouns##{self.active_element.uuid}", self.active_element.pronouns)
