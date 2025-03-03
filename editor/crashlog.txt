@@ -1,20 +1,11 @@
 Traceback (most recent call last):
   File "/home/baltdev/Documents/titanium/editor/./main.py", line 24, in main
     editor.main_loop(dt)
-  File "/home/baltdev/Documents/titanium/editor/editor.py", line 222, in main_loop
-    glfw.poll_events()
-  File "/home/baltdev/Documents/titanium/.venv/lib/python3.11/site-packages/glfw/__init__.py", line 1861, in poll_events
-    _glfw.glfwPollEvents()
-  File "/home/baltdev/Documents/titanium/.venv/lib/python3.11/site-packages/glfw/__init__.py", line 692, in errcheck
-    _reraise(exc[1], exc[2])
-  File "/home/baltdev/Documents/titanium/.venv/lib/python3.11/site-packages/glfw/__init__.py", line 70, in _reraise
-    raise exception.with_traceback(traceback)
-  File "/home/baltdev/Documents/titanium/.venv/lib/python3.11/site-packages/glfw/__init__.py", line 671, in callback_wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/baltdev/Documents/titanium/editor/editor.py", line 176, in cb
-    self.move_to_el(1)
-  File "/home/baltdev/Documents/titanium/editor/editor.py", line 210, in move_to_el
-    if el.uuid == self.uuid:
-                  ^^^^^^^^^
-AttributeError: 'Editor' object has no attribute 'uuid'
+  File "/home/baltdev/Documents/titanium/editor/editor.py", line 235, in main_loop
+    self.render_interface()
+  File "/home/baltdev/Documents/titanium/editor/editor.py", line 260, in render_interface
+    self.main_interface()
+  File "/home/baltdev/Documents/titanium/editor/editor.py", line 306, in main_interface
+    r, g, b = element.embed_color.to_bytes(3, "big")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: int too big to convert

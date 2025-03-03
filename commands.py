@@ -30,9 +30,9 @@ class CommandCog(commands.Cog):
         Specifying no element will show the entire table.
         """
         async with ctx.typing():
-            query = query.strip()
             if query is None:
                 query = "normal"
+            query = query.strip()
             if query in self.bot.tables:
                 emb = discord.Embed()
                 buf = io.BytesIO()
@@ -42,9 +42,10 @@ class CommandCog(commands.Cog):
                 emb.set_image(url="attachment://table.png")
                 return await ctx.reply(embed=emb, files=[file])
             genderswapped = False
-            if query.startswith("--genderswapped"):
-                query = query.removeprefix("--genderswapped").strip()
-                genderswapped = True
+            for prefix in ("--genderswapped", "-gs"):
+                if query.startswith(prefix):
+                    query = query.removeprefix(prefix).strip()
+                    genderswapped = True
             # Parse the element's name
             query = query.lower()
             if query in self.bot.elements_by_name:
@@ -80,6 +81,8 @@ class CommandCog(commands.Cog):
                 pronouns = "/".join(table.get(part, part) for part in parts)
             emb.add_field(name="Pronouns", value=pronouns)
             emb.add_field(name="Author", value=element.author, inline = False)
+            if element.atomic_number is not None:
+                emb.add_field(name="Wiki Page", value=f"[[link]](<https://elementcattos.miraheze.org/wiki/{element.name}>)", inline = True)
             buf = io.BytesIO()
             icon.save(buf, format = "PNG")
             buf.seek(0)

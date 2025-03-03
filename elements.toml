@@ -1014,6 +1014,33 @@ embed_color = 0xFF0067
 coordinates = { x = 58, y = 491 }
 atomic_number = 119
 
+["Mendelevium"]
+table = "normal"
+symbol = "Md"
+pronouns = "they/them"
+author = "@03113"
+embed_color = 0x9F875D
+coordinates = { x = 793, y = 549 }
+atomic_number = 101
+
+["Rutherfordium"]
+table = "normal"
+symbol = "Rf"
+pronouns = "they/any"
+author = "@shardthefuckingwhajje, @vitasnova"
+embed_color = 0xFFD762
+coordinates = { x = 205, y = 442 }
+atomic_number = 104
+
+["Hassium"]
+table = "normal"
+symbol = "Hs"
+pronouns = "they/them"
+author = "@lotus-and-pkmn, @cosmosnaught"
+embed_color = 0xFEAF52
+coordinates = { x = 401, y = 442 }
+atomic_number = 108
+
 
 ### nonperiodics ###
 

@@ -123,7 +123,6 @@ class Editor:
         self.camera = Camera()
         self.dragging = False
         self.was_dragging = False
-        self.colorpicking = False
 
 
         # Load elements.toml
@@ -162,6 +161,7 @@ class Editor:
         def cb(window, key, scancode, action, mods):
             self.impl.keyboard_callback(window, key, scancode, action, mods)
             if self.io.want_text_input: return
+            world_mouse = self.mouse_pos
             if key == glfw.KEY_UP or key == glfw.KEY_W:
                 self.camera.accel.y = 0 if action == glfw.RELEASE else -CAMERA_SPEED / self.camera.zoom
             if key == glfw.KEY_LEFT or key == glfw.KEY_A:
@@ -180,8 +180,15 @@ class Editor:
                 self.camera.target_zoom *= 2
             if key == glfw.KEY_MINUS and action == glfw.PRESS:
                 self.camera.target_zoom /= 2
-            if key == glfw.KEY_BACKSLASH and action == glfw.PRESS:
-                self.colorpicking = True
+            if (
+              self.active_element is not None and
+              key == glfw.KEY_BACKSLASH and 
+              action == glfw.PRESS and 
+              world_mouse.within(Point(), Point(*self.table.actual_image.size))
+            ):
+                r, g, b = self.table.actual_image.getpixel((world_mouse.x, world_mouse.y)) 
+                new_int = r << 16 | g << 8 | b
+                self.active_element.embed_color = new_int
             if key == glfw.KEY_ENTER and action == glfw.PRESS:
                 self.table.elements.append(Element(
                     "",
@@ -277,12 +284,7 @@ class Editor:
         screen_mouse = Point(*self.io.mouse_pos)
         main_size = Point(*imgui.get_content_region_available())
         world_mouse = self.screen_to_world(screen_mouse, main_size)
-
-        if self.colorpicking and world_mouse.within(Point(), Point(*self.table.actual_image.size)):
-            print(f"Mouse position: {world_mouse}")
-            r, g, b = self.table.actual_image.getpixel((world_mouse.x, world_mouse.y)) 
-            imgui.set_clipboard_text(f"#{r << 16 | g << 8 | b:06X}")
-            self.colorpicking = False
+        self.mouse_pos = world_mouse
         
         draw_list = imgui.get_window_draw_list()
         
