@@ -2,3 +2,4 @@
 /.venv
 /__pycache__
 /editor/__pycache__
+*/nohup.out
