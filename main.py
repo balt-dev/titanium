@@ -245,6 +245,9 @@ class Bot(commands.Bot):
 def main():
     discord.utils.setup_logging()
 
+    if Path("beta").exists():
+      config.prefixes = ["="]
+
     bot = Bot(
         command_prefix=config.prefixes,
         strip_after_prefix=True,

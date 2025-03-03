@@ -1017,7 +1017,7 @@ atomic_number = 119
 ["Mendelevium"]
 table = "normal"
 symbol = "Md"
-pronouns = "they/them"
+pronouns = "he/him"
 author = "@03113"
 embed_color = 0x9F875D
 coordinates = { x = 793, y = 549 }
@@ -1677,6 +1677,38 @@ author = "@elementcattos"
 embed_color = 0x4CA1FC
 coordinates = { x = 108, y = 302 }
 
+["Sciphonium"]
+table = "nonperiodics"
+symbol = "Sp"
+pronouns = "she/her"
+author = "@sciphonpylon"
+embed_color = 0xFFFF00
+coordinates = { x = 941, y = 302 }
+
+["Pyrite"]
+table = "nonperiodics"
+symbol = "FeS₂"
+pronouns = "she/her"
+author = "@starri-cosmikat"
+embed_color = 0xE6E19C
+coordinates = { x = 157, y = 302 }
+
+["Galena"]
+table = "nonperiodics"
+symbol = "PbS"
+pronouns = "she/her"
+author = "@starri-cosmikat"
+embed_color = 0xFFFFFF
+coordinates = { x = 206, y = 302 }
+
+["Xenium"]
+table = "nonperiodics"
+symbol = "λ"
+pronouns = "unknown"
+author = "@elementcattos"
+embed_color = 0xFFFC67
+coordinates = { x = 402, y = 253 }
+
 
 ### genderswap ###
 
@@ -1705,11 +1737,4 @@ pronouns = "xe/xem"
 author = "@elementcattos"
 embed_color = 0x4B56EC
 path = "xenon_old.png"
-
-["Sciphonium"]
-symbol = "Sp"
-pronouns = "she/her"
-author = "@sciphonpylon"
-embed_color = 0xFFFF00
-path = "sciphonium-icon.png"
 
