@@ -1149,7 +1149,7 @@ symbol = "Vi"
 pronouns = "unknown"
 author = "@profeshinul-wizurd"
 embed_color = 0x7CCAFF
-coordinates = { x = 59, y = 106 }
+coordinates = { x = 10, y = 106 }
 
 ["Redstone"]
 table = "nonperiodics"
@@ -1726,6 +1726,46 @@ pronouns = "unknown"
 author = "@elementcattos"
 embed_color = 0xFFFC67
 coordinates = { x = 402, y = 253 }
+
+["Purrcent"]
+table = "nonperiodics"
+symbol = "cta"
+pronouns = "he/him"
+author = "@elementcattos"
+embed_color = 0x000000
+coordinates = { x = 500, y = 302 }
+
+["Paige"]
+table = "nonperiodics"
+symbol = "Pg"
+pronouns = "she/it"
+author = "@noone.is.here___"
+embed_color = 0xFFFFFF
+coordinates = { x = 794, y = 302 }
+
+["Black Hole"]
+table = "nonperiodics"
+symbol = "BL"
+pronouns = "?"
+author = "@jc_1."
+embed_color = 0x000000
+coordinates = { x = 843, y = 302 }
+
+["Irium"]
+table = "nonperiodics"
+symbol = "Ie"
+pronouns = "she/her"
+author = "@jc_1., @sciphonpylon"
+embed_color = 0xE5E5E5
+coordinates = { x = 892, y = 302 }
+
+["Vincium (H)"]
+table = "nonperiodics"
+symbol = "Vi(H)"
+pronouns = "unknown"
+author = "@profeshinul-wizurd"
+embed_color = 0xFFC600
+coordinates = { x = 59, y = 106 }
 
 
 ### genderswap ###
