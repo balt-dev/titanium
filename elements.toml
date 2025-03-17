@@ -1115,7 +1115,7 @@ coordinates = { x = 255, y = 57 }
 table = "nonperiodics"
 symbol = "???"
 pronouns = "she/her"
-author = "@elementcattos"
+author = "@voodoo-economics"
 embed_color = 0x94E09D
 coordinates = { x = 304, y = 57 }
 
@@ -1130,7 +1130,7 @@ coordinates = { x = 843, y = 57 }
 ["Fire"]
 table = "nonperiodics"
 symbol = "🜂"
-pronouns = "unknown"
+pronouns = "he/him"
 author = "@elementcattos"
 embed_color = 0xFFD800
 coordinates = { x = 745, y = 57 }
@@ -1138,7 +1138,7 @@ coordinates = { x = 745, y = 57 }
 ["Air"]
 table = "nonperiodics"
 symbol = "🜁"
-pronouns = "unknown"
+pronouns = "she/her"
 author = "@elementcattos"
 embed_color = 0xDEF1FF
 coordinates = { x = 794, y = 57 }
@@ -1154,7 +1154,7 @@ coordinates = { x = 10, y = 106 }
 ["Redstone"]
 table = "nonperiodics"
 symbol = "Rs"
-pronouns = "unknown"
+pronouns = "he/him"
 author = "@elementcattos"
 embed_color = 0xFF0000
 coordinates = { x = 108, y = 106 }
@@ -1195,7 +1195,7 @@ coordinates = { x = 304, y = 106 }
 table = "nonperiodics"
 symbol = "Ⓢ"
 pronouns = "unknown"
-author = "@elementcattos"
+author = "@thanatiawashere"
 embed_color = 0x51FF65
 coordinates = { x = 360, y = 99 }
 
@@ -1210,7 +1210,7 @@ coordinates = { x = 745, y = 106 }
 ["Earth"]
 table = "nonperiodics"
 symbol = "🜃"
-pronouns = "unknown"
+pronouns = "he/him"
 author = "@elementcattos"
 embed_color = 0x6B803F
 coordinates = { x = 794, y = 106 }
@@ -1362,15 +1362,15 @@ coordinates = { x = 304, y = 204 }
 ["Soul Matter"]
 table = "nonperiodics"
 symbol = "So"
-pronouns = "unknown"
+pronouns = "none"
 author = "@sciphonpylon"
 embed_color = 0xFF6A00
-coordinates = { x = 353, y = 204 }
+coordinates = { x = 451, y = 204 }
 
 ["Dream Matter"]
 table = "nonperiodics"
 symbol = "Dr"
-pronouns = "unknwon"
+pronouns = "none"
 author = "@sciphonpylon"
 embed_color = 0xFFFF42
 coordinates = { x = 402, y = 204 }
@@ -1378,15 +1378,15 @@ coordinates = { x = 402, y = 204 }
 ["Chaos"]
 table = "nonperiodics"
 symbol = "Ch"
-pronouns = "unknown"
+pronouns = "none"
 author = "@sciphonpylon"
 embed_color = 0x7F0000
-coordinates = { x = 451, y = 204 }
+coordinates = { x = 402, y = 253 }
 
 ["Heart Matter"]
 table = "nonperiodics"
 symbol = "Hr"
-pronouns = "unknown"
+pronouns = "none"
 author = "@sciphonpylon"
 embed_color = 0xE598CC
 coordinates = { x = 500, y = 204 }
@@ -1394,7 +1394,7 @@ coordinates = { x = 500, y = 204 }
 ["Dark Matter (Kirby)"]
 table = "nonperiodics"
 symbol = "Dm"
-pronouns = "unknown"
+pronouns = "none"
 author = "@sciphonpylon"
 embed_color = 0xFF9400
 coordinates = { x = 549, y = 204 }
@@ -1410,7 +1410,7 @@ coordinates = { x = 598, y = 204 }
 ["Propulsion Gel"]
 table = "nonperiodics"
 symbol = "Ap_P"
-pronouns = "unknown"
+pronouns = "he/him"
 author = "@elementcattos"
 embed_color = 0xFF6A00
 coordinates = { x = 647, y = 204 }
@@ -1418,7 +1418,7 @@ coordinates = { x = 647, y = 204 }
 ["Repulsion Gel"]
 table = "nonperiodics"
 symbol = "Ap_R"
-pronouns = "unknown"
+pronouns = "he/him"
 author = "@elementcattos"
 embed_color = 0x0094FF
 coordinates = { x = 696, y = 204 }
@@ -1426,7 +1426,7 @@ coordinates = { x = 696, y = 204 }
 ["Conversion Gel"]
 table = "nonperiodics"
 symbol = "Ap_C"
-pronouns = "unknown"
+pronouns = "they/them"
 author = "@elementcattos"
 embed_color = 0xE5E2DD
 coordinates = { x = 745, y = 204 }
@@ -1434,7 +1434,7 @@ coordinates = { x = 745, y = 204 }
 ["Blended Gel"]
 table = "nonperiodics"
 symbol = "Ap_OH"
-pronouns = "unknown"
+pronouns = "he/him"
 author = "@elementcattos"
 embed_color = 0x85A6BB
 coordinates = { x = 794, y = 204 }
@@ -1498,7 +1498,7 @@ coordinates = { x = 941, y = 155 }
 ["Yoyle Metal"]
 table = "nonperiodics"
 symbol = "Ym"
-pronouns = "unknown"
+pronouns = "they/them"
 author = "@elementcattos"
 embed_color = 0x9C9C9C
 coordinates = { x = 843, y = 204 }
@@ -1514,7 +1514,7 @@ coordinates = { x = 892, y = 204 }
 ["Nyanite"]
 table = "nonperiodics"
 symbol = "Ny"
-pronouns = "unknown"
+pronouns = "he/him"
 author = "@sciphonpylon"
 embed_color = 0xFD97FD
 coordinates = { x = 941, y = 204 }
@@ -1554,7 +1554,7 @@ coordinates = { x = 157, y = 253 }
 ["Void Termina"]
 table = "nonperiodics"
 symbol = "Vo(T)"
-pronouns = "unknown"
+pronouns = "null"
 author = "@sciphonpylon"
 embed_color = 0xE1FF52
 coordinates = { x = 451, y = 253 }
@@ -1562,7 +1562,7 @@ coordinates = { x = 451, y = 253 }
 ["Void Soul"]
 table = "nonperiodics"
 symbol = "Vo(S)"
-pronouns = "unknown"
+pronouns = "null"
 author = "@sciphonpylon"
 embed_color = 0x003FFF
 coordinates = { x = 500, y = 253 }
@@ -1570,7 +1570,7 @@ coordinates = { x = 500, y = 253 }
 ["Void"]
 table = "nonperiodics"
 symbol = "Vo"
-pronouns = "unknown"
+pronouns = "any/all"
 author = "@sciphonpylon"
 embed_color = 0xFFFFFF
 coordinates = { x = 549, y = 253 }
@@ -1722,10 +1722,10 @@ coordinates = { x = 206, y = 302 }
 ["Xenium"]
 table = "nonperiodics"
 symbol = "λ"
-pronouns = "unknown"
+pronouns = "*headcrab noise*/*houndeye noise*"
 author = "@elementcattos"
 embed_color = 0xFFFC67
-coordinates = { x = 402, y = 253 }
+coordinates = { x = 353, y = 204 }
 
 ["Purrcent"]
 table = "nonperiodics"
@@ -1767,6 +1767,22 @@ author = "@profeshinul-wizurd"
 embed_color = 0xFFC600
 coordinates = { x = 59, y = 106 }
 
+["Garnium"]
+table = "nonperiodics"
+symbol = "Gn"
+pronouns = "he/him"
+author = "@elementcattos"
+embed_color = 0x6E833E
+coordinates = { x = 549, y = 302 }
+
+["Scandium (Lit)"]
+table = "nonperiodics"
+symbol = "Sc*"
+pronouns = "he/him"
+author = "@mobropro, @baltdev"
+embed_color = 0xECE6CE
+coordinates = { x = 598, y = 302 }
+
 
 ### genderswap ###
 
@@ -1781,13 +1797,6 @@ pronouns = "he/they"
 author = "@pukicho"
 embed_color = 0xFFFF80
 path = "pukicho.png"
-
-["Scandium (Lit)"]
-symbol = "Sc*"
-pronouns = "he/him"
-author = "@mobropro, @baltdev"
-embed_color = 0xFFFFFF
-path = "lit_scandium.png"
 
 ["Xenon (Old)"]
 symbol = "Xe*"
