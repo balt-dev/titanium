@@ -77,35 +77,6 @@ class Element:
     image: Image.Image | tuple[str, tuple[int, int]]
     """The image, or table coordinates, of the element."""
 
-class Context(commands.Context):
-    silent: bool = False
-    ephemeral: bool = False
-
-    async def error(self, msg: str, embed: discord.Embed | None = None, **kwargs):
-        try:
-            await self.message.add_reaction("\u26a0\ufe0f")
-        except discord.errors.NotFound:
-            pass
-        if embed is not None:
-            return await self.reply(msg, embed=embed, **kwargs)
-        else:
-            return await self.reply(msg, **kwargs)
-
-    async def send(self, content: str = "", embed: discord.Embed | None = None, **kwargs):
-        content = str(content)
-        kwargs['ephemeral'] = self.ephemeral
-        kwargs['silent'] = self.silent
-        if len(content) > 2000:
-            msg = " [...] \n\n (Character limit reached!)"
-            content = content[:2000 - len(msg)] + msg
-        if embed is not None:
-            if content:
-                return await super().send(content, embed=embed, **kwargs)
-            return await super().send(embed=embed, **kwargs)
-        elif content:
-            return await super().send(content, embed=embed, **kwargs)
-        return await super().send(**kwargs)
-
     async def reply(self, *args, mention_author: bool = False, **kwargs):
         kwargs['mention_author'] = mention_author
         kwargs['reference'] = self.message
@@ -238,29 +209,26 @@ class Bot(commands.Bot):
         self.parser.reset()
         self.parser.feed(table_content)
         print("Loaded image!")
-    
-    async def get_context(self, message: discord.Message, **kwargs) -> Context:
-        return await super().get_context(message, cls=Context)
 
 def main():
     discord.utils.setup_logging()
 
-    if Path("beta").exists():
-      config.prefixes = ["="]
-
     bot = Bot(
-        command_prefix=config.prefixes,
-        strip_after_prefix=True,
-        description = config.description,
-        allowed_mentions=discord.AllowedMentions(everyone = False, roles = False, users = False),
-        intents=discord.Intents(messages = True, message_content = True, guilds = True),
+        [],
+        activity=config.activity,
+        description=config.description,
+        allowed_mentions=discord.AllowedMentions(everyone=False, roles=False),
+        intents=discord.Intents(),
         member_cache_flags=discord.MemberCacheFlags.none(),
         max_messages=None,
-        chunk_guilds_at_startup=None,
+        chunk_guilds_at_startup=False,
         owner_ids=config.owner_ids
     )
 
-    bot.run(auth.DISCORD_TOKEN, log_handler=None)
+    try:
+        bot.run(auth.DISCORD_TOKEN, log_handler=None)
+    finally:
+        asyncio.run(bot.close())
 
 if __name__ == "__main__":
     main()

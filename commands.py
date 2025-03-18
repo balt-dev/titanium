@@ -7,7 +7,8 @@ from typing import TYPE_CHECKING
 import asyncio
 
 import discord
-from discord.ext import commands
+from discord import app_commands, Interaction
+from discord.app_commands import Choice
 from PIL import Image
 
 import config
@@ -18,248 +19,131 @@ else:
     Context = None
     Bot = None
 
-class CommandCog(commands.Cog):
+async def error(interaction: Interaction, *args, **kwargs):
+    return await respond(interaction, *args, ephemeral=True, **kwargs)
+
+async def respond(interaction: Interaction, content: str | None = None, *, edit: bool = False, **kwargs):
+    if interaction.response.is_done():
+        if edit:
+            if "ephemeral" in kwargs: del kwargs["ephemeral"]
+            return await (await interaction.original_response()).edit(**kwargs, content=content)
+        return await interaction.followup.send(content, **kwargs)
+    return await interaction.response.send_message(content, **kwargs)
+
+class CommandCog(commands.Cog, name = "Commands"):
     def __init__(self, bot: Bot):
         self.bot = bot
         print("Loading commands...")
 
-    @commands.command(aliases=["e", "el", "elem", "t", "tab", "table"])
-    async def element(self, ctx: Context, *, query: str | None = None):
+    @app_commands.command()
+    async def element(self, intr: Interaction, query: str, genderswap: bool):
         """
         Gets an element by their name, symbol, or atomic number.
         Specifying no element will show the entire table.
         """
-        async with ctx.typing():
-            if query is None:
-                query = "normal"
-            query = query.strip()
-            if query in self.bot.tables:
-                emb = discord.Embed()
-                buf = io.BytesIO()
-                self.bot.tables[query].save(buf, format="PNG")
-                buf.seek(0)
-                file = discord.File(buf, "table.png")
-                emb.set_image(url="attachment://table.png")
-                return await ctx.reply(embed=emb, files=[file])
-            genderswapped = False
-            for prefix in ("--genderswapped", "-gs"):
-                if query.startswith(prefix):
-                    query = query.removeprefix(prefix).strip()
-                    genderswapped = True
-            # Parse the element's name
-            query = query.lower()
-            if query in self.bot.elements_by_name:
-                element = self.bot.elements_by_name[query]
-            elif query in self.bot.elements_by_symbol:
-                element = self.bot.elements_by_symbol[query]
-            elif (
-                query.isascii() and
-                query.isdecimal() and
-                len(query) > 0 and
-                (atomic_number := int(query)) in self.bot.elements_by_atomic_number
-            ):
-                element = self.bot.elements_by_atomic_number[atomic_number]
-            else:
-                query = query.replace("`", "").replace("\n", "")[:32]
-                return await ctx.error(f"No element found with name, symbol, or atomic number `{query}`!")   
+        await interaction.response.defer(thinking=True)
+        query = query.strip()
+        # Parse the element's name
+        query = query.lower()
+        if query in self.bot.elements_by_name:
+            element = self.bot.elements_by_name[query]
+        elif query in self.bot.elements_by_symbol:
+            element = self.bot.elements_by_symbol[query]
+        elif (
+            query.isascii() and
+            query.isdecimal() and
+            len(query) > 0 and
+            (atomic_number := int(query)) in self.bot.elements_by_atomic_number
+        ):
+            element = self.bot.elements_by_atomic_number[atomic_number]
+        else:
+            query = query.replace("`", "").replace("\n", "")[:32]
+            return await error(intr, f"No element found with name, symbol, or atomic number `{query}`!")   
 
-            icon = self.bot.get_element_icon(element, genderswapped)
-            width, height = icon.size
-            icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
+        icon = self.bot.get_element_icon(element, genderswapped)
+        width, height = icon.size
+        icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
 
-            emb = discord.Embed (
-                color=element.embed_color,
-                title=element.name
-            )
-            emb.add_field(name="Symbol", value=element.symbol)
-            if element.atomic_number is not None:
-                emb.add_field(name="Atomic Number", value=element.atomic_number)
-            pronouns = element.pronouns
-            if genderswapped and "/" in pronouns:
-                parts = pronouns.split("/")
-                table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?"}
-                pronouns = "/".join(table.get(part, part) for part in parts)
-            emb.add_field(name="Pronouns", value=pronouns)
-            emb.add_field(name="Author", value=element.author, inline = False)
-            if element.atomic_number is not None:
-                emb.add_field(name="Wiki Page", value=f"[[link]](<https://elementcattos.miraheze.org/wiki/{element.name}>)", inline = True)
-            buf = io.BytesIO()
-            icon.save(buf, format = "PNG")
-            buf.seek(0)
-            raw_name = element.name.replace(" ", "")
-            path = f"{raw_name}.png"
-            emb.set_image(url=f"attachment://{path}")
-            file = discord.File(buf, path)
-            return await ctx.reply(embed=emb, files=[file])
-
-    @commands.command()
-    @commands.is_owner()
-    async def reload(self, ctx: Context):
-        """Reloads the bot's commands. Owner-only."""
-        async with ctx.typing():
-            await self.bot.reload_extension("commands")
-            return await ctx.reply("Reloaded!")
-
-    @commands.group()
-    async def toml(self, ctx: Context):
-        """Sends or recieves elements.toml."""
-        ...
+        emb = discord.Embed (
+            color=element.embed_color,
+            title=element.name
+        )
+        emb.add_field(name="Symbol", value=element.symbol)
+        if element.atomic_number is not None:
+            emb.add_field(name="Atomic Number", value=element.atomic_number)
+        pronouns = element.pronouns
+        if genderswapped and "/" in pronouns:
+            parts = pronouns.split("/")
+            table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?"}
+            pronouns = "/".join(table.get(part, part) for part in parts)
+        emb.add_field(name="Pronouns", value=pronouns)
+        emb.add_field(name="Author", value=element.author, inline = False)
+        if element.atomic_number is not None:
+            emb.add_field(name="Wiki Page", value=f"[[link]](<https://elementcattos.miraheze.org/wiki/{element.name}>)", inline = True)
+        buf = io.BytesIO()
+        icon.save(buf, format = "PNG")
+        buf.seek(0)
+        raw_name = element.name.replace(" ", "")
+        path = f"{raw_name}.png"
+        emb.set_image(url=f"attachment://{path}")
+        file = discord.File(buf, path)
+        return await respond(embed=emb, files=[file])
     
-    @toml.command()
-    async def get(self, ctx: Context):
-        """Sends elements.toml."""
-        return await ctx.reply(files = [discord.File("elements.toml")])
-    
-    @commands.is_owner()
-    async def set(self, ctx: Context, attachment: discord.Attachment):
-        """Sends elements.toml. Owner only."""
-        await attachment.save("elements.toml")
-        return await ctx.reply("Saved! Run `.sync`.")
 
-    @commands.command()
-    @commands.is_owner()
-    async def sync(self, ctx: Context):
+    @element.autocomplete("query")
+    async def complete_query(self, interaction: Interaction, query: str):
+        CHOICE_MAX = 25
+
+        query = query.strip().lower()
+        if query.len() > 0 and query.is_numeric():
+            return []
+        choices = []
+        for name in self.bot.elements_by_name.keys():
+            if query.startswith(name):
+                choices.append(name)
+        for name in self.bot.elements_by_name.keys():
+            if query.startswith(name):
+                choices.append(name)
+        choices = [Choices(name=choice, value=choice) for choice in sorted(choices, key = lambda str: str.lower())]
+        return choices[:CHOICE_MAX]
+
+    @app_commands.command()
+    async def sync(self, intr: Interaction):
         """Syncs the table to the bot. Owner-only."""
-        async with ctx.typing():
-            self.bot.sync_image()
-            self.bot.load_elements()
-            return await ctx.reply("Synced image!")
+        await interaction.response.defer(thinking=True)
+        assert self.bot.is_owner(intr.user), "This command can only be run by the bot's owners!"
+        self.bot.sync_image()
+        self.bot.load_elements()
+        return await respond("Synced image!", ephemeral=true)
 
-    @commands.Cog.listener()
-    async def on_command_error(self, ctx: Context, error: Exception):
-        """Handles an error."""
+    def cog_load(self):
+        tree = self.bot.tree
+        self._old_tree_error = tree.on_error
+        tree.on_error = self.on_app_command_error
+
+    def cog_unload(self):
+        tree = self.bot.tree
+        tree.on_error = self._old_tree_error
+
+    async def on_app_command_error(
+        self,
+        interaction: Interaction,
+        err: AppCommandError
+    ):
         try:
-            if hasattr(ctx.command, 'on_error'):
-                return
+            if isinstance(err, app_commands.CommandInvokeError) or isinstance(err, commands.ExtensionFailed):
+                err = err.original
+            if isinstance(err, app_commands.CheckFailure):
+                return await respond(interaction, "This command can only be run by the owners of the bot!", ephemeral=True)
+            if isinstance(err, AssertionError):
+                return await respond(interaction, f"{err.args[0]}", ephemeral=True)
 
-            ignored = (
-                commands.CommandNotFound,
-                commands.NotOwner,
-                commands.CheckFailure
-            )
-            if isinstance(error, ignored):
-                return
-
-            # Allows us to check for original exceptions raised and sent to CommandInvokeError.
-            # If nothing is found. We keep the exception passed to
-            # on_command_error.
-            error = getattr(error, 'original', error)
-
-            emb = discord.Embed(title="Command Error", color=0xffff00)
-            emb.description = str(error)
-
-            # Adds embed fields
-            # Bot
-            if self.bot.user:  # tautology but fits the scheme
-                message_id = self.bot.user.id
-                name = self.bot.user.display_name
-            # Message
-            if ctx.message:
-                message_id = ctx.message.id
-                content = ctx.message.content
-                if len(content) > 1024:
-                    content = content[1000] + "`...`"
-                formatted = f"ID: {message_id}\nContent: `{content}`"
-                emb.add_field(name="Message", value=formatted)
-            # Channel
-            if isinstance(ctx.channel, discord.TextChannel):
-                message_id = ctx.channel.id
-                name = ctx.channel.name
-                nsfw = "[NSFW Channel] " if ctx.channel.is_nsfw() else ""
-                news = "[News Channel] " if ctx.channel.is_news() else ""
-                formatted = f"message_id: {message_id}\nName: {name}\n{nsfw}{news}"
-                emb.add_field(name="Channel", value=formatted)
-            # Guild (if in a guild)
-            if ctx.guild is not None:
-                ID = ctx.guild.id
-                name = ctx.guild.name
-                member_count = ctx.guild.member_count
-                formatted = f"ID: {ID}\nName: {name}\nMember count: {member_count}"
-                emb.add_field(name="Guild", value=formatted)
-            # Author (DM information if any)
-            if ctx.author:
-                ID = ctx.author.id
-                name = ctx.author.name
-                discriminator = ctx.author.discriminator
-                nick = f"({ctx.author.nick})" if ctx.guild else ""
-                DM = "Message Author" if ctx.guild else "Direct Message"
-                formatted = f"ID: {ID}\nName: {name}#{discriminator} ({nick})"
-                emb.add_field(name=DM, value=formatted)
-            # Message link
-            if all([ctx.guild is not None, ctx.channel, ctx.message]):
-                guild_ID = ctx.guild.id
-                channel_ID = ctx.channel.id
-                message_ID = ctx.message.id
-                formatted = f"[Jump to message](https://discordapp.com/channels/{guild_ID}/{channel_ID}/{message_ID})"
-                emb.add_field(name="Jump", value=formatted)
-            if isinstance(error, commands.CommandOnCooldown):
-                if ctx.author.id == self.bot.owner_id:
-                    return await ctx.reinvoke()
-                else:
-                    return await ctx.error(str(error))
-
-            elif isinstance(error, commands.DisabledCommand):
-                await ctx.error(f'{ctx.command} has been disabled.')
-
-            elif isinstance(error, commands.ExpectedClosingQuoteError):
-                return await ctx.error(f"Expected closing quotation mark `{error.close_quote}`.")
-
-            elif isinstance(error, commands.InvalidEndOfQuotedStringError):
-                return await ctx.error(f"Expected a space after a quoted string, got `{error.char}` instead.")
-
-            elif isinstance(error, commands.UnexpectedQuoteError):
-                return await ctx.error(f"Got unexpected quotation mark `{error.quote}` inside a string.")
-
-            elif \
-                isinstance(error, commands.ConversionError) \
-                or isinstance(error, commands.BadArgument) \
-                or isinstance(error, commands.ArgumentParsingError) \
-                or isinstance(error, commands.MissingRequiredArgument):
-                return await ctx.error("Command arguments were invalid! Check the entry in `.help` for the correct format.")
-
-            elif isinstance(error, AssertionError) or isinstance(error, NotImplementedError):
-                return await ctx.error(error.args[0])
-
-            elif isinstance(error, discord.errors.HTTPException):
-                return await ctx.error(f"Ran into an HTTP error of code {error.status}.")
-            else:
-                raise error
-        except Exception as error:
-            if os.name == "nt":
-                trace = '\n'.join(
-                    traceback.format_tb(
-                        error.__traceback__)).replace(
-                    os.getcwd(),
-                    os.path.curdir).replace(
-                    os.environ["USERPROFILE"],
-                    "")
-            else:
-                trace = '\n'.join(
-                    traceback.format_tb(
-                        error.__traceback__)).replace(
-                    os.getcwd(),
-                    os.path.curdir)
-            if len(trace) > 1000:
-                trace = trace[:500] + "\n\n...\n\n" + trace[-500:] 
-            title = f'**Unhandled exception!**'
-            err_desc = f"An unhandled error occurred within the code. Contact the bot owner ASAP!\n**{type(error).__name__}**: {error}"
-            err_desc = f"{err_desc}\n```\n{trace}\n```"
-            if len(err_desc) > 500:
-                err_desc = err_desc[:250] + "..." + err_desc[-250:]
-            emb = discord.Embed(
-                title=title,
-                description=err_desc,
-                color=15029051
-            )
-            await ctx.error(msg='', embed=emb)
-            print(
-                f'Ignoring exception in command {ctx.command}:',
-                file=sys.stderr)
-            traceback.print_exception(
-                type(error),
-                error,
-                error.__traceback__,
-                file=sys.stderr)
+            tb = "\n".join(traceback.format_exception(err, chain=False, limit=-5))
+            await respond(interaction, f"""```py
+{tb[:1900]}```""", ephemeral=True)
+        except discord.errors.InteractionResponded:
+            # Probably already handled earlier
+            traceback.print_exception(err)
 
 async def setup(bot: Bot):
     await bot.add_cog(CommandCog(bot))
