@@ -213,7 +213,7 @@ def main():
     discord.utils.setup_logging()
 
     bot = Bot(
-        [],
+        ["&.."],
         description=config.description,
         allowed_mentions=discord.AllowedMentions(everyone=False, roles=False),
         intents=discord.Intents(),
