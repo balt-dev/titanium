@@ -131,12 +131,6 @@ class CommandCog(commands.Cog, name = "Commands"):
             assert await self.bot.is_owner(interaction.user), "This command can only be run by the bot's owners!"
             await self.bot.tree.sync(guild=TESTING_GUILD if testing else None)
             await respond(interaction, "Synced!", ephemeral=True)
-    
-    @bot.command()
-    async def bootstrap_tree(self, ctx):
-        async with ctx.typing():
-            await self.bot.tree.sync()
-            await ctx.send("Tree bootstrapped!")
 
     def cog_load(self):
         tree = self.bot.tree
@@ -168,4 +162,3 @@ class CommandCog(commands.Cog, name = "Commands"):
 
 async def setup(bot: Bot):
     await bot.add_cog(CommandCog(bot))
-    print("Loaded commands!")

@@ -139,6 +139,9 @@ class Bot(commands.Bot):
         if "commands" in self.extensions:
             await self.unload_extension("commands")
         await self.load_extension("commands")
+
+        await self.tree.sync()
+
         print("Ready!")
 
     def load_elements(self):
@@ -213,10 +216,11 @@ def main():
     discord.utils.setup_logging()
 
     bot = Bot(
-        ["&.."],
+        command_prefix=".",
+        case_insensitive=True,
         description=config.description,
-        allowed_mentions=discord.AllowedMentions(everyone=False, roles=False),
-        intents=discord.Intents(),
+        allowed_mentions=discord.AllowedMentions(everyone=False, roles=False, users=False),
+        intents=discord.Intents(message_content = True, guilds = True),
         member_cache_flags=discord.MemberCacheFlags.none(),
         max_messages=None,
         chunk_guilds_at_startup=False,
