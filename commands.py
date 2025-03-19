@@ -3,12 +3,13 @@ import io
 from pathlib import Path
 import os
 import sys
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 import asyncio
 
 import discord
 from discord import app_commands, Interaction
 from discord.app_commands import Choice
+from discord.ext import commands
 from PIL import Image
 
 import config
@@ -35,86 +36,101 @@ class CommandCog(commands.Cog, name = "Commands"):
         self.bot = bot
         print("Loading commands...")
 
-    @app_commands.command()
-    async def element(self, intr: Interaction, query: str, genderswap: bool):
-        """
-        Gets an element by their name, symbol, or atomic number.
-        Specifying no element will show the entire table.
-        """
-        await interaction.response.defer(thinking=True)
-        query = query.strip()
-        # Parse the element's name
-        query = query.lower()
-        if query in self.bot.elements_by_name:
-            element = self.bot.elements_by_name[query]
-        elif query in self.bot.elements_by_symbol:
-            element = self.bot.elements_by_symbol[query]
-        elif (
-            query.isascii() and
-            query.isdecimal() and
-            len(query) > 0 and
-            (atomic_number := int(query)) in self.bot.elements_by_atomic_number
-        ):
-            element = self.bot.elements_by_atomic_number[atomic_number]
-        else:
-            query = query.replace("`", "").replace("\n", "")[:32]
-            return await error(intr, f"No element found with name, symbol, or atomic number `{query}`!")   
+        @bot.tree.command()
+        async def element(intr: Interaction, query: str, genderswapped: bool = False):
+            """
+            Gets an element by their name, symbol, or atomic number.
+            """
+            await intr.response.defer(thinking=True)
+            query = query.strip()
+            # Parse the element's name
+            query = query.lower()
+            if query in self.bot.elements_by_name:
+                element = self.bot.elements_by_name[query]
+            elif query in self.bot.elements_by_symbol:
+                element = self.bot.elements_by_symbol[query]
+            elif (
+                query.isascii() and
+                query.isdecimal() and
+                len(query) > 0 and
+                (atomic_number := int(query)) in self.bot.elements_by_atomic_number
+            ):
+                element = self.bot.elements_by_atomic_number[atomic_number]
+            else:
+                query = query.replace("`", "").replace("\n", "")[:32]
+                return await error(intr, f"No element found with name, symbol, or atomic number `{query}`!")   
 
-        icon = self.bot.get_element_icon(element, genderswapped)
-        width, height = icon.size
-        icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
+            icon = self.bot.get_element_icon(element, genderswapped)
+            width, height = icon.size
+            icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
 
-        emb = discord.Embed (
-            color=element.embed_color,
-            title=element.name
-        )
-        emb.add_field(name="Symbol", value=element.symbol)
-        if element.atomic_number is not None:
-            emb.add_field(name="Atomic Number", value=element.atomic_number)
-        pronouns = element.pronouns
-        if genderswapped and "/" in pronouns:
-            parts = pronouns.split("/")
-            table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?"}
-            pronouns = "/".join(table.get(part, part) for part in parts)
-        emb.add_field(name="Pronouns", value=pronouns)
-        emb.add_field(name="Author", value=element.author, inline = False)
-        if element.atomic_number is not None:
-            emb.add_field(name="Wiki Page", value=f"[[link]](<https://elementcattos.miraheze.org/wiki/{element.name}>)", inline = True)
-        buf = io.BytesIO()
-        icon.save(buf, format = "PNG")
-        buf.seek(0)
-        raw_name = element.name.replace(" ", "")
-        path = f"{raw_name}.png"
-        emb.set_image(url=f"attachment://{path}")
-        file = discord.File(buf, path)
-        return await respond(embed=emb, files=[file])
-    
+            emb = discord.Embed (
+                color=element.embed_color,
+                title=element.name
+            )
+            emb.add_field(name="Symbol", value=element.symbol)
+            if element.atomic_number is not None:
+                emb.add_field(name="Atomic Number", value=element.atomic_number)
+            pronouns = element.pronouns
+            if genderswapped and "/" in pronouns:
+                parts = pronouns.split("/")
+                table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?"}
+                pronouns = "/".join(table.get(part, part) for part in parts)
+            emb.add_field(name="Pronouns", value=pronouns)
+            emb.add_field(name="Author", value=element.author, inline = False)
+            if element.atomic_number is not None:
+                emb.add_field(name="Wiki Page", value=f"[[link]](<https://elementcattos.miraheze.org/wiki/{element.name}>)", inline = True)
+            buf = io.BytesIO()
+            icon.save(buf, format = "PNG")
+            buf.seek(0)
+            raw_name = "".join(c if c.isalnum() else "_" for c in element.name).lower()
+            path = f"{raw_name}.png"
+            emb.set_image(url=f"attachment://{path}")
+            file = discord.File(buf, path)
+            return await respond(intr, embed=emb, files=[file])
+        
+        @element.autocomplete("query")
+        async def complete_query(interaction: Interaction, query: str):
+            query = query.strip().lower()
+            if len(query) > 0 and query.isdecimal() and query.isascii():
+                return []
+            choices = set()
+            for el in self.bot.elements_by_name.values():
+                if el.name.lower().startswith(query):
+                    choices.add(el.name)
+            return [Choice(name=choice, value=choice) for choice in sorted(choices, key = lambda str: str.lower())][:25]
 
-    @element.autocomplete("query")
-    async def complete_query(self, interaction: Interaction, query: str):
-        CHOICE_MAX = 25
+        @bot.tree.command()
+        async def table(intr: Interaction, query: Literal[*bot.tables.keys()]):
+            """Gets an entire table."""
+            await intr.response.defer(thinking=True)
+            query = query.strip().lower()
+            table = self.bot.tables[query]
+            emb = discord.Embed(color=0xFFFFFF)
+            buf = io.BytesIO()
+            table.save(buf, format = "PNG")
+            buf.seek(0)
+            path = f"{query}.png"
+            emb.set_image(url=f"attachment://{path}")
+            file = discord.File(buf, path)
+            return await respond(intr, embed=emb, files=[file])
 
-        query = query.strip().lower()
-        if query.len() > 0 and query.is_numeric():
-            return []
-        choices = []
-        for name in self.bot.elements_by_name.keys():
-            if query.startswith(name):
-                choices.append(name)
-        for name in self.bot.elements_by_name.keys():
-            if query.startswith(name):
-                choices.append(name)
-        choices = [Choices(name=choice, value=choice) for choice in sorted(choices, key = lambda str: str.lower())]
-        return choices[:CHOICE_MAX]
+        @bot.tree.command()
+        async def sync(intr: Interaction):
+            """Syncs the table to the bot. Owner-only."""
+            await intr.response.defer(thinking=True)
+            assert await self.bot.is_owner(intr.user), "This command can only be run by the bot's owners!"
+            self.bot.sync_image()
+            self.bot.load_elements()
+            return await respond(intr, "Synced image!", ephemeral=True)
 
-    @app_commands.command()
-    async def sync(self, intr: Interaction):
-        """Syncs the table to the bot. Owner-only."""
-        await interaction.response.defer(thinking=True)
-        assert self.bot.is_owner(intr.user), "This command can only be run by the bot's owners!"
-        self.bot.sync_image()
-        self.bot.load_elements()
-        return await respond("Synced image!", ephemeral=true)
+        @bot.tree.command()
+        async def sync_tree(interaction: Interaction, testing: bool = True):
+            await interaction.response.defer(thinking=True)
+            TESTING_GUILD = discord.Object(586337032876589075)
+            assert await self.bot.is_owner(interaction.user), "This command can only be run by the bot's owners!"
+            await self.bot.tree.sync(guild=TESTING_GUILD if testing else None)
+            await respond(interaction, "Synced!", ephemeral=True)
 
     def cog_load(self):
         tree = self.bot.tree
@@ -128,7 +144,7 @@ class CommandCog(commands.Cog, name = "Commands"):
     async def on_app_command_error(
         self,
         interaction: Interaction,
-        err: AppCommandError
+        err
     ):
         try:
             if isinstance(err, app_commands.CommandInvokeError) or isinstance(err, commands.ExtensionFailed):
@@ -139,8 +155,7 @@ class CommandCog(commands.Cog, name = "Commands"):
                 return await respond(interaction, f"{err.args[0]}", ephemeral=True)
 
             tb = "\n".join(traceback.format_exception(err, chain=False, limit=-5))
-            await respond(interaction, f"""```py
-{tb[:1900]}```""", ephemeral=True)
+            await respond(interaction, f"Unhandled exception occurred! {err}\n```py\n{tb[-1900:]}\n```", ephemeral=True)
         except discord.errors.InteractionResponded:
             # Probably already handled earlier
             traceback.print_exception(err)

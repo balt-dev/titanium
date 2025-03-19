@@ -10,6 +10,7 @@ from typing import Callable, Self
 import tomllib
 from dataclasses import dataclass
 from pathlib import Path
+import asyncio
 
 import discord
 from discord.ext import commands
@@ -114,7 +115,7 @@ class Bot(commands.Bot):
     elements_by_name: dict[str, Element]
 
     def __init__(self, *args, **kwargs):
-        self.client = None
+        self.rest_client = None
         self.parser = None
         self.tables = {}
         self.elements_by_atomic_number = {}
@@ -123,10 +124,7 @@ class Bot(commands.Bot):
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
-        if "commands" in self.extensions:
-            await self.unload_extension("commands")
-        await self.load_extension("commands")
-        self.client = pytumblr.TumblrRestClient(
+        self.rest_client = pytumblr.TumblrRestClient(
             auth.CONSUMER_KEY,
             auth.CONSUMER_SECRET,
             auth.OAUTH_TOKEN,
@@ -138,6 +136,9 @@ class Bot(commands.Bot):
         self.parser = ImageScraper(cb)
         self.sync_image()
         self.load_elements()
+        if "commands" in self.extensions:
+            await self.unload_extension("commands")
+        await self.load_extension("commands")
         print("Ready!")
 
     def load_elements(self):
@@ -190,7 +191,6 @@ class Bot(commands.Bot):
         omnium_embed = int(omnium_embed[0]) << 16 | int(omnium_embed[1]) << 8 | int(omnium_embed[2])
         omnium = Element("Omnium", "???", None, "any/all", omnium_embed, "@everyone", omnium)
         self.elements_by_name["omnium"] = omnium
-        print("Loaded elements!")
         
     def get_element_icon(self, el: Element, genderswap = False):
         if type(el.image) is tuple:
@@ -202,20 +202,18 @@ class Bot(commands.Bot):
     
     def sync_image(self):
         print("Loading image...")
-        info = self.client.posts("elementcattos", id=config.post_id)
+        info = self.rest_client.posts("elementcattos", id=config.post_id)
         table_post = info["posts"][0]
         table_data = table_post["trail"][0]
         table_content = table_data["content_raw"]
         self.parser.reset()
         self.parser.feed(table_content)
-        print("Loaded image!")
 
 def main():
     discord.utils.setup_logging()
 
     bot = Bot(
         [],
-        activity=config.activity,
         description=config.description,
         allowed_mentions=discord.AllowedMentions(everyone=False, roles=False),
         intents=discord.Intents(),
