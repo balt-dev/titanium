@@ -1354,7 +1354,7 @@ coordinates = { x = 255, y = 204 }
 ["Amalgam"]
 table = "nonperiodics"
 symbol = "Al×Hg"
-pronouns = "unknown"
+pronouns = "he/she"
 author = "@elementcattos"
 embed_color = 0xB8C2CB
 coordinates = { x = 304, y = 204 }
