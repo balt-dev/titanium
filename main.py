@@ -140,8 +140,6 @@ class Bot(commands.Bot):
             await self.unload_extension("commands")
         await self.load_extension("commands")
 
-        await self.tree.sync()
-
         print("Ready!")
 
     def load_elements(self):
