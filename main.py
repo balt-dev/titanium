@@ -195,7 +195,7 @@ class Bot(commands.Bot):
         omnium_embed = np.array([(*el.embed_color.to_bytes(3, "big"), ) for el in self.elements_by_atomic_number.values()], dtype=np.uint8)
         omnium_embed = np.average(omnium_embed, axis = 0).astype(int)
         omnium_embed = int(omnium_embed[0]) << 16 | int(omnium_embed[1]) << 8 | int(omnium_embed[2])
-        omnium = Element("Omnium", "???", None, "any/all", omnium_embed, "@everyone", omnium)
+        omnium = Element("Omnium", "???", None, "any/all", omnium_embed, "@everyone", omnium, False)
         self.elements_by_name["omnium"] = omnium
         
     def get_element_icon(self, el: Element, genderswap = False):
