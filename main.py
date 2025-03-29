@@ -32,6 +32,7 @@ ELEMENT_SCHEMA_OPTIONAL: dict[str, type | dict[Self]] = {
     "coordinates": {"x": int, "y": int},
     "path": str,
     "table": str,
+    "oc": bool
 }
 
 def check_schema(obj: dict, schema: dict, optional: dict | None = None) -> list[str]:
@@ -77,6 +78,9 @@ class Element:
 
     image: Image.Image | tuple[str, tuple[int, int]]
     """The image, or table coordinates, of the element."""
+
+    oc: bool
+    """Whether the element is actually someone's OC - ocs shouldn't be genderswapped."""
 
     async def reply(self, *args, mention_author: bool = False, **kwargs):
         kwargs['mention_author'] = mention_author
@@ -173,7 +177,8 @@ class Bot(commands.Bot):
                 raw_element["pronouns"],
                 raw_element["embed_color"],
                 raw_element["author"],
-                image
+                image,
+                raw_element.get("oc", False)
             )
             self.elements_by_name[name.lower()] = element
             if element.atomic_number is not None:

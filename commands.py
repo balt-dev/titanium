@@ -59,6 +59,8 @@ class CommandCog(commands.Cog, name = "Commands"):
             else:
                 query = query.replace("`", "").replace("\n", "")[:32]
                 return await error(intr, f"No element found with name, symbol, or atomic number `{query}`!")   
+            
+            genderswapped &= not element.oc
 
             icon = self.bot.get_element_icon(element, genderswapped)
             width, height = icon.size

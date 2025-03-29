@@ -63,6 +63,7 @@ class Element:
     embed_color: int
     atomic_number: int | None
     coordinates: Point | None
+    oc: bool
     uuid: str = field(default_factory = uuid.uuid4)
 
 CAMERA_DAMPING = 0.001
@@ -146,7 +147,8 @@ class Editor:
                 data["author"].split(", "),
                 data["embed_color"],
                 data.get("atomic_number"),
-                coords
+                coords,
+                data.get("oc", False)
             )
             if "table" in data:
                 self.tables[data["table"]].elements.append(el)
@@ -197,7 +199,8 @@ class Editor:
                     [],
                     0xFF0000,
                     None,
-                    self.camera.pos
+                    self.camera.pos,
+                    False
                 ))
         return cb
 
@@ -381,6 +384,10 @@ class Editor:
             if changed: self.active_element.atomic_number = new_number
         else:
             self.active_element.atomic_number = None
+
+        state, is_oc = imgui.checkbox("OC", self.active_element.oc)
+        if state:
+            self.active_element.oc = is_oc
 
         imgui.text(f"Authors")
         imgui.indent()
