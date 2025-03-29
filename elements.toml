@@ -1991,7 +1991,7 @@ author = "@mobopro"
 embed_color = 0xCC96FF
 coordinates = { x = 941, y = 351 }
 
-["Excitron"]
+["Exciton"]
 table = "nonperiodics"
 symbol = "-+"
 pronouns = "it/its"
