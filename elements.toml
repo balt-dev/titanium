@@ -1234,7 +1234,7 @@ coordinates = { x = 10, y = 155 }
 ["Deoxyribonucleic Acid"]
 table = "nonperiodics"
 symbol = "DNA"
-pronouns = "unknown"
+pronouns = "any/all"
 author = "@elementcattos"
 embed_color = 0xFFFFE5
 coordinates = { x = 59, y = 155 }
@@ -1701,7 +1701,7 @@ symbol = "Sp"
 pronouns = "she/her"
 author = "@sciphonpylon"
 embed_color = 0xFFFF00
-coordinates = { x = 941, y = 302 }
+coordinates = { x = 997, y = 106 }
 
 ["Pyrite"]
 table = "nonperiodics"
@@ -1741,7 +1741,7 @@ symbol = "Pg"
 pronouns = "she/it"
 author = "@noone.is.here___"
 embed_color = 0xFFFFFF
-coordinates = { x = 794, y = 302 }
+coordinates = { x = 997, y = 8 }
 
 ["Black Hole"]
 table = "nonperiodics"
@@ -1749,7 +1749,7 @@ symbol = "BL"
 pronouns = "?"
 author = "@jc_1."
 embed_color = 0x000000
-coordinates = { x = 843, y = 302 }
+coordinates = { x = 892, y = 302 }
 
 ["Irium"]
 table = "nonperiodics"
@@ -1757,7 +1757,7 @@ symbol = "Ie"
 pronouns = "she/her"
 author = "@jc_1., @sciphonpylon"
 embed_color = 0xE5E5E5
-coordinates = { x = 892, y = 302 }
+coordinates = { x = 997, y = 57 }
 
 ["Vincium (H)"]
 table = "nonperiodics"
@@ -1851,7 +1851,7 @@ coordinates = { x = 745, y = 302 }
 table = "nonperiodics"
 symbol = "​"
 pronouns = "they/them"
-author = "@crazygino77"
+author = "@elementcattos"
 embed_color = 0x000000
 coordinates = { x = 10, y = 351 }
 
@@ -1931,7 +1931,7 @@ coordinates = { x = 451, y = 351 }
 table = "nonperiodics"
 symbol = "H₂S₂"
 pronouns = "she/her"
-author = "@lementcattos"
+author = "@elementcattos"
 embed_color = 0xFEF4AD
 coordinates = { x = 500, y = 351 }
 
@@ -1978,18 +1978,18 @@ coordinates = { x = 745, y = 351 }
 ["Irish"]
 table = "nonperiodics"
 symbol = "Ih"
-pronouns = "he/him"
+pronouns = "he/him (fried)"
 author = "@irish"
 embed_color = 0xFBF0FE
-coordinates = { x = 892, y = 351 }
+coordinates = { x = 997, y = 253 }
 
-["Mobopro"]
+["Mobropro"]
 table = "nonperiodics"
 symbol = "Mbp"
 pronouns = "he/him"
-author = "@mobopro"
+author = "@mobropro"
 embed_color = 0xCC96FF
-coordinates = { x = 941, y = 351 }
+coordinates = { x = 997, y = 302 }
 
 ["Exciton"]
 table = "nonperiodics"
@@ -2105,8 +2105,8 @@ coordinates = { x = 745, y = 400 }
 
 ["Guanine"]
 table = "nonperiodics"
-symbol = "he/they"
-pronouns = "C5H5N5O"
+symbol = "C₅H₅N₅O"
+pronouns = "he/they"
 author = "@ciaaik"
 embed_color = 0x93CEEC
 coordinates = { x = 206, y = 449 }
@@ -2155,7 +2155,7 @@ coordinates = { x = 451, y = 449 }
 table = "nonperiodics"
 symbol = "XY₃Z₆(T₆O₁₈)(BO₃)₃V₃W"
 pronouns = "any/all"
-author = "@mobopro"
+author = "@mobropro"
 embed_color = 0xB89543
 coordinates = { x = 500, y = 449 }
 
@@ -2174,6 +2174,86 @@ pronouns = "any/all/genderfluid"
 author = "@toonsandwich"
 embed_color = 0xFE0000
 coordinates = { x = 745, y = 449 }
+
+["Quintessence"]
+table = "nonperiodics"
+symbol = "Q"
+pronouns = "unknown"
+author = "@cannibalcaprine"
+embed_color = 0xFFD45F
+coordinates = { x = 794, y = 302 }
+
+["Quin-tessence"]
+table = "nonperiodics"
+symbol = "Q*"
+pronouns = "he/any"
+author = "@elementcattos, Anonymous"
+embed_color = 0x7F92FF
+coordinates = { x = 843, y = 302 }
+
+["Lotusine"]
+table = "nonperiodics"
+symbol = "Lt"
+pronouns = "nya/nyaself"
+author = "@lotus-and-pkmn"
+embed_color = 0x54FFB4
+coordinates = { x = 997, y = 155 }
+
+["Shardium"]
+table = "nonperiodics"
+symbol = "Wh"
+pronouns = "genderfawn"
+author = "@shardthefuckingwhajje"
+embed_color = 0x80C3FF
+coordinates = { x = 997, y = 204 }
+
+["Aspirium"]
+table = "nonperiodics"
+symbol = "Vc"
+pronouns = "she/her"
+author = "@velcrow102"
+embed_color = 0x4B4BA0
+coordinates = { x = 997, y = 351 }
+
+["Oregonium"]
+table = "nonperiodics"
+symbol = "Or"
+pronouns = "unknown"
+author = "@jc_1."
+embed_color = 0x6B70FF
+coordinates = { x = 997, y = 400 }
+
+["Washingtonium"]
+table = "nonperiodics"
+symbol = "Wa"
+pronouns = "unknown"
+author = "@jc_1."
+embed_color = 0x349943
+coordinates = { x = 997, y = 449 }
+
+["Mottium"]
+table = "nonperiodics"
+symbol = "Mi"
+pronouns = "unknown"
+author = "@jc_1."
+embed_color = 0xDEBAFF
+coordinates = { x = 997, y = 498 }
+
+["Wizard Slime"]
+table = "nonperiodics"
+symbol = "Sl"
+pronouns = "he/it/xe"
+author = "@thewizardslime"
+embed_color = 0x00C3FF
+coordinates = { x = 997, y = 547 }
+
+["Vacuum"]
+table = "nonperiodics"
+symbol = "null"
+pronouns = "none"
+author = "@sciphonpylon"
+embed_color = 0x000000
+coordinates = { x = 108, y = 400 }
 
 
 ### genderswap ###
