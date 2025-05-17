@@ -12,11 +12,13 @@ from editor import Editor
 import time
 
 def main():
+    print("Hello!")
     window = init()
     imgui.create_context()
     impl = GlfwRenderer(window)
     impl.refresh_font_texture()
     editor = Editor(window, impl)
+    print("Launching editor...")
     try:
         last_update = time.perf_counter()
         dt = 1 / 60
@@ -67,3 +69,5 @@ def init():
 
 if __name__ == '__main__':
     main()
+else:
+    print(__name__)

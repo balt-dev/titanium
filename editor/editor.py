@@ -202,6 +202,19 @@ class Editor:
                     self.camera.pos,
                     False
                 ))
+            if self.active_element is not None and \
+                key == glfw.KEY_TAB and action == glfw.PRESS:
+
+                self.table.elements.append(Element(
+                    self.active_element.name,
+                    self.active_element.symbol,
+                    self.active_element.pronouns,
+                    [author for author in self.active_element.authors],
+                    self.active_element.embed_color,
+                    self.active_element.atomic_number,
+                    self.camera.pos,
+                    self.active_element.oc
+                ))
         return cb
 
     def move_to_el(self, offset: int):
