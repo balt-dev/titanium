@@ -2004,7 +2004,7 @@ coordinates = { x = 997, y = 302 }
 table = "nonperiodics"
 symbol = "-+"
 pronouns = "it/its"
-author = "unknown"
+author = "@elementcattos"
 embed_color = 0xFFD800
 coordinates = { x = 10, y = 400 }
 
@@ -2356,7 +2356,7 @@ coordinates = { x = 941, y = 449 }
 table = "nonperiodics"
 symbol = "Ps"
 pronouns = "unknown"
-author = "@lithominium"
+author = "unknown, @lithominium (speculative)"
 embed_color = 0xFF0000
 coordinates = { x = 157, y = 400 }
 
