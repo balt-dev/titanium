@@ -111,8 +111,8 @@ class ImageScraper(html.parser.HTMLParser):
             self.seen_image = True
 
 GENDERSWAPPED = {
-    "normal": "genderswapped",
-    "nonperiodics": "genderswapped_nonperiodics"
+    "normal": "genderswap",
+    "nonperiodics": "genderswap_nonperiodics"
 }
 
 class Bot(commands.Bot):
