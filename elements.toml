@@ -2,6 +2,8 @@
 normal = "normal.png"
 nonperiodics = "nonperiodics.png"
 genderswap = "genderswap.png"
+genderswap_nonperiodics = "genderswap_nonperiodics.png"
+planet = "planetcattos.png"
 
 ### normal ###
 
@@ -765,7 +767,7 @@ atomic_number = 82
 ["Bismuth"]
 table = "normal"
 symbol = "Bi"
-pronouns = "she/her"
+pronouns = "she/he"
 author = "@elementcattos"
 embed_color = 0x00E1FF
 coordinates = { x = 744, y = 393 }
@@ -1914,7 +1916,7 @@ coordinates = { x = 304, y = 351 }
 
 ["Ferrofluid"]
 table = "nonperiodics"
-symbol = "Fe²+Fe₂³+O₄+H₂O"
+symbol = "Fe²⁺Fe₂³⁺O₄+H₂O"
 pronouns = "genderfluid"
 author = "@elementcattos"
 embed_color = 0x352E36
@@ -1946,7 +1948,7 @@ coordinates = { x = 500, y = 351 }
 
 ["Hydrogen Monochloride"]
 table = "nonperiodics"
-symbol = "HCl*"
+symbol = "HCl"
 pronouns = "she/her"
 author = "@starri-cosmikat"
 embed_color = 0xDBD371
@@ -1954,7 +1956,7 @@ coordinates = { x = 549, y = 351 }
 
 ["Hydrochloric Acid"]
 table = "nonperiodics"
-symbol = "HCl"
+symbol = "HC+H₂O"
 pronouns = "she/her"
 author = "@starri-cosmikat"
 embed_color = 0xF2FFE3
@@ -2235,7 +2237,7 @@ coordinates = { x = 997, y = 400 }
 ["Washingtonium"]
 table = "nonperiodics"
 symbol = "Wa"
-pronouns = "unknown"
+pronouns = "he/they"
 author = "@jc_1."
 embed_color = 0x349943
 coordinates = { x = 997, y = 449 }
@@ -2250,8 +2252,8 @@ coordinates = { x = 997, y = 498 }
 
 ["Wizard Slime"]
 table = "nonperiodics"
-symbol = "Sl"
-pronouns = "he/she/it/xe"
+symbol = "Ws"
+pronouns = "she/her"
 author = "@thewizardslime"
 embed_color = 0x00C3FF
 coordinates = { x = 997, y = 547 }
@@ -2291,7 +2293,7 @@ coordinates = { x = 843, y = 351 }
 ["Felazisnium"]
 table = "nonperiodics"
 symbol = "Fz"
-pronouns = "unknown"
+pronouns = "⚡/⚡"
 author = "Funi"
 embed_color = 0xF123D2
 coordinates = { x = 892, y = 351 }
@@ -2443,7 +2445,7 @@ coordinates = { x = 402, y = 498 }
 ["Jadeite"]
 table = "nonperiodics"
 symbol = "NaAlSi₂O₆"
-pronouns = "she/they"
+pronouns = "he/they"
 author = "@lotus-and-pkmn"
 embed_color = 0x00AF36
 coordinates = { x = 451, y = 498 }
@@ -2554,7 +2556,7 @@ coordinates = { x = 941, y = 547 }
 
 ["PBcatto"]
 table = "nonperiodics"
-symbol = ":flag_fbw_pb_bw:"
+symbol = "she/her"
 pronouns = "genderfruct"
 author = "@pbcatto"
 embed_color = 0x002F6C

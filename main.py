@@ -110,6 +110,11 @@ class ImageScraper(html.parser.HTMLParser):
                     (self.callback)(im.copy().convert("RGBA"))
             self.seen_image = True
 
+GENDERSWAPPED = {
+    "normal": "genderswapped",
+    "nonperiodics": "genderswapped_nonperiodics"
+}
+
 class Bot(commands.Bot):
     client: pytumblr.TumblrRestClient
     parser: ImageScraper
@@ -201,8 +206,8 @@ class Bot(commands.Bot):
     def get_element_icon(self, el: Element, genderswap = False):
         if type(el.image) is tuple:
             el_table = el.image[0]
-            if genderswap and el_table == "normal":
-                el_table = "genderswap"
+            if genderswap:
+                el_table = GENDERSWAPPED.get(el_table, el_table)
             return self.tables[el_table].crop((el.image[1][0] - 1, el.image[1][1] - 1, el.image[1][0] + config.element_size[0] + 1, el.image[1][1] + config.element_size[1] + 1))
         return el.image
     
@@ -217,20 +222,21 @@ class Bot(commands.Bot):
 
 def main():
     discord.utils.setup_logging()
+    is_beta = Path("./beta").exists()
 
     bot = Bot(
-        command_prefix=".",
+        command_prefix="," if is_beta else ".",
         case_insensitive=True,
         description=config.description,
         allowed_mentions=discord.AllowedMentions(everyone=False, roles=False, users=False),
-        intents=discord.Intents(message_content = True, guilds = True),
+        intents=discord.Intents(message_content = True),
         member_cache_flags=discord.MemberCacheFlags.none(),
         max_messages=None,
         chunk_guilds_at_startup=False,
         owner_ids=config.owner_ids
     )
 
-    try:
+    try: 
         bot.run(auth.DISCORD_TOKEN, log_handler=None)
     finally:
         asyncio.run(bot.close())
