@@ -62,6 +62,11 @@ class CommandCog(commands.Cog, name = "Commands"):
             
             genderswapped &= not element.oc
 
+            if element.name == "Testosterone" and genderswapped:
+                element = self.elements_by_name["estrogen"]
+            elif element.name == "Estrogen" and genderswapped:
+                element = self.elements_by_name["testosterone"]
+
             icon = self.bot.get_element_icon(element, genderswapped)
             width, height = icon.size
             icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
@@ -74,7 +79,9 @@ class CommandCog(commands.Cog, name = "Commands"):
             if element.atomic_number is not None:
                 emb.add_field(name="Atomic Number", value=element.atomic_number)
             pronouns = element.pronouns
-            if genderswapped and "/" in pronouns:
+            if genderswapped and "/" in pronouns and not (
+                element.name in ("Testosterone", "Estrogen") 
+            ):
                 parts = pronouns.split("/")
                 table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?"}
                 pronouns = "/".join(table.get(part, part) for part in parts)

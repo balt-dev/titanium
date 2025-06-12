@@ -211,11 +211,7 @@ class Bot(commands.Bot):
         assert not (el.oc and genderswap), "People's OCs can't be genderswapped out of respect for the authors. Sorry!"
         if type(el.image) is tuple:
             el_table = el.image[0]
-            if el.name == "Testosterone" and genderswap:
-                el = self.elements_by_name["estrogen"]
-            elif el.name == "Estrogen" and genderswap:
-                el = self.elements_by_name["testosterone"]
-            elif genderswap:
+            if genderswap:
                 el_table = GENDERSWAPPED.get(el_table, el_table)
             return self.tables[el_table].crop((el.image[1][0] - 1, el.image[1][1] - 1, el.image[1][0] + config.element_size[0] + 1, el.image[1][1] + config.element_size[1] + 1))
         return el.image
