@@ -103,11 +103,15 @@ class CommandCog(commands.Cog, name = "Commands"):
             return [Choice(name=choice, value=choice) for choice in sorted(choices, key = lambda str: str.lower())][:25]
 
         @bot.tree.command()
-        async def table(intr: Interaction, query: Literal[*bot.tables.keys()]):
+        async def table(intr: Interaction, query: str):
             """Gets an entire table."""
             await intr.response.defer(thinking=True)
             query = query.strip().lower()
-            table = self.bot.tables[query]
+            try:
+                table = self.bot.tables[query]
+            except KeyError:
+                query = query.replace("`", "").replace("\n", "")[:32]
+                return await error(intr, f"No table found with name `{query}`!")
             emb = discord.Embed(color=0xFFFFFF)
             buf = io.BytesIO()
             table.save(buf, format = "PNG")
@@ -116,6 +120,15 @@ class CommandCog(commands.Cog, name = "Commands"):
             emb.set_image(url=f"attachment://{path}")
             file = discord.File(buf, path)
             return await respond(intr, embed=emb, files=[file])
+
+        @table.autocomplete("query")
+        async def complete_query(interaction: Interaction, query: str):
+            query = query.strip().lower()
+            choices = set()
+            for table in self.bot.tables.values():
+                if table.lower().startswith(query):
+                    choices.add(el.name)
+            return [Choice(name=choice, value=choice) for choice in sorted(choices, key = lambda str: str.lower())][:25]
 
         @bot.tree.command()
         async def sync(intr: Interaction):

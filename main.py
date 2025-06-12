@@ -204,9 +204,14 @@ class Bot(commands.Bot):
         self.elements_by_name["omnium"] = omnium
         
     def get_element_icon(self, el: Element, genderswap = False):
+        assert not (el.oc and genderswap), "People's OCs can't be genderswapped out of respect for the authors. Sorry!"
         if type(el.image) is tuple:
             el_table = el.image[0]
-            if genderswap:
+            if el.name == "Testosterone" and genderswap:
+                el = self.elements_by_name["Estrogen"]
+            elif el.name == "Estrogen" and genderswap:
+                el = self.elements_by_name["Testosterone"]
+            elif genderswap:
                 el_table = GENDERSWAPPED.get(el_table, el_table)
             return self.tables[el_table].crop((el.image[1][0] - 1, el.image[1][1] - 1, el.image[1][0] + config.element_size[0] + 1, el.image[1][1] + config.element_size[1] + 1))
         return el.image

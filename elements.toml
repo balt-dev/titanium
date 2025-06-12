@@ -1956,7 +1956,7 @@ coordinates = { x = 549, y = 351 }
 
 ["Hydrochloric Acid"]
 table = "nonperiodics"
-symbol = "HC+H₂O"
+symbol = "HCl+H₂O"
 pronouns = "she/her"
 author = "@starri-cosmikat"
 embed_color = 0xF2FFE3
@@ -2556,8 +2556,8 @@ coordinates = { x = 941, y = 547 }
 
 ["PBcatto"]
 table = "nonperiodics"
-symbol = "she/her"
-pronouns = "genderfruct"
+symbol = ":flag_fbw_pb_bw:"
+pronouns = "she/her"
 author = "@pbcatto"
 embed_color = 0x002F6C
 coordinates = { x = 997, y = 596 }
