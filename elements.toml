@@ -2598,9 +2598,9 @@ author = "@irish"
 embed_color = 0xEDFF00
 coordinates = { x = 190, y = 220 }
 
-["Mercury"]
+["Mercury*"]
 table = "planet"
-symbol = "Mercury"
+symbol = "Mercury*"
 pronouns = "unknown"
 author = "@irish"
 embed_color = 0x979797
