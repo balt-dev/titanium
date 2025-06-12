@@ -447,6 +447,8 @@ class Editor:
                 toml.write(f'coordinates = {{ x = {element.coordinates.x}, y = {element.coordinates.y} }}\n')
                 if element.atomic_number is not None:
                     toml.write(f'atomic_number = {element.atomic_number}\n')
+                if element.oc:
+                    toml.write(f'oc = True\n')
                 toml.write(f'\n')
         toml.write(f"\n### extras ###\n\n\n")
         for (element, path) in self.extras:
@@ -457,6 +459,8 @@ class Editor:
             toml.write(f'embed_color = 0x{element.embed_color:06X}\n')
             if element.atomic_number is not None:
                 toml.write(f'atomic_number = {element.atomic_number}\n')
+            if element.oc:
+                toml.write(f'oc = True\n')
             toml.write(f'path = "{path}"\n')
             toml.write(f'\n')
         # We only do this now so that the toml isn't wiped out if something errors mid-write

@@ -2567,6 +2567,54 @@ coordinates = { x = 997, y = 596 }
 
 
 
+### genderswap_nonperiodics ###
+
+
+
+### planet ###
+
+
+["Earth"]
+table = "planet"
+symbol = "Earth"
+pronouns = "unknown"
+author = "@irish"
+embed_color = 0x748E45
+coordinates = { x = 244, y = 220 }
+
+["Mars"]
+table = "planet"
+symbol = "Mars"
+pronouns = "he/him"
+author = "@irish"
+embed_color = 0xD0A06C
+coordinates = { x = 298, y = 220 }
+
+["Venus"]
+table = "planet"
+symbol = "Venus"
+pronouns = "she/her"
+author = "@irish"
+embed_color = 0xEDFF00
+coordinates = { x = 190, y = 220 }
+
+["Mercury"]
+table = "planet"
+symbol = "Mercury"
+pronouns = "unknown"
+author = "@irish"
+embed_color = 0x979797
+coordinates = { x = 136, y = 220 }
+
+["The Sun"]
+table = "planet"
+symbol = "The Sun"
+pronouns = "unknown"
+author = "@irish"
+embed_color = 0xFFD343
+coordinates = { x = 81, y = 220 }
+
+
 ### extras ###
 
 
