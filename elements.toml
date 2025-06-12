@@ -2574,9 +2574,9 @@ coordinates = { x = 997, y = 596 }
 ### planet ###
 
 
-["Earth"]
+["Earth*"]
 table = "planet"
-symbol = "Earth"
+symbol = "Earth*"
 pronouns = "unknown"
 author = "@irish"
 embed_color = 0x748E45

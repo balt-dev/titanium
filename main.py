@@ -11,6 +11,7 @@ import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 import asyncio
+import sys
 
 import discord
 from discord.ext import commands
@@ -131,6 +132,9 @@ class Bot(commands.Bot):
         self.elements_by_symbol = {}
         self.elements_by_name = {}
         super().__init__(*args, **kwargs)
+
+    def shutdown(self):
+        sys.exit(0)
 
     async def on_ready(self):
         self.rest_client = pytumblr.TumblrRestClient(

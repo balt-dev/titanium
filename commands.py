@@ -147,6 +147,14 @@ class CommandCog(commands.Cog, name = "Commands"):
             await self.bot.tree.sync(guild=TESTING_GUILD if testing else None)
             await respond(interaction, "Synced!", ephemeral=True)
 
+        @bot.tree.command()
+        async def restart(interaction: Interaction):
+            await interaction.response.defer(thinking=True)
+            TESTING_GUILD = discord.Object(586337032876589075)
+            assert await self.bot.is_owner(interaction.user), "This command can only be run by the bot's owners!"
+            await respond(interaction, "Restarting...", ephemeral=True)
+            self.bot.shutdown()
+
     def cog_load(self):
         tree = self.bot.tree
         self._old_tree_error = tree.on_error
