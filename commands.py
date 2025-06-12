@@ -63,9 +63,9 @@ class CommandCog(commands.Cog, name = "Commands"):
             genderswapped &= not element.oc
 
             if element.name == "Testosterone" and genderswapped:
-                element = self.elements_by_name["estrogen"]
+                element = self.bot.elements_by_name["estrogen"]
             elif element.name == "Estrogen" and genderswapped:
-                element = self.elements_by_name["testosterone"]
+                element = self.bot.elements_by_name["testosterone"]
 
             icon = self.bot.get_element_icon(element, genderswapped)
             width, height = icon.size
