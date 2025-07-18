@@ -83,7 +83,7 @@ class CommandCog(commands.Cog, name = "Commands"):
                 element.name in ("Testosterone", "Estrogen") 
             ):
                 parts = pronouns.split("/")
-                table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?"}
+                table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?", "him*": "her*", "trim": "ter"}
                 pronouns = "/".join(table.get(part, part) for part in parts)
             emb.add_field(name="Pronouns", value=pronouns)
             emb.add_field(name="Author", value=element.author, inline = False)

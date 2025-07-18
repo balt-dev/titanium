@@ -1070,6 +1070,42 @@ embed_color = 0xFFD502
 coordinates = { x = 744, y = 442 }
 atomic_number = 115
 
+["Unbinilium"]
+table = "normal"
+symbol = "Ubn"
+pronouns = "unknonw"
+author = "@elementcattos"
+embed_color = 0x0E58FF
+coordinates = { x = 107, y = 491 }
+atomic_number = 120
+
+["Californium"]
+table = "normal"
+symbol = "Cf"
+pronouns = "she/her"
+author = "@ichibin-irish, @thatmarkerdude, @haniszar36, @lythic-felinementals, @a-thalassophiliac"
+embed_color = 0xC93835
+coordinates = { x = 646, y = 549 }
+atomic_number = 98
+
+["Meitnerium"]
+table = "normal"
+symbol = "Mt"
+pronouns = "she/they"
+author = "@shardthefuckingwhajje, @voodoo-economics, @haniszar36, @ichibin-irish"
+embed_color = 0x7D7429
+coordinates = { x = 450, y = 442 }
+atomic_number = 109
+
+["Dubnium"]
+table = "normal"
+symbol = "Db"
+pronouns = "tree/trim"
+author = "@thecheese85, @ichibin-irish"
+embed_color = 0x7ACCB2
+coordinates = { x = 254, y = 442 }
+atomic_number = 105
+
 
 ### nonperiodics ###
 
@@ -1750,7 +1786,7 @@ coordinates = { x = 500, y = 302 }
 table = "nonperiodics"
 symbol = "Pg"
 pronouns = "she/it"
-author = "@noone.is.here___"
+author = "@lilyy0001"
 embed_color = 0xFFFFFF
 coordinates = { x = 997, y = 8 }
 
@@ -1989,8 +2025,8 @@ coordinates = { x = 745, y = 351 }
 ["Irish"]
 table = "nonperiodics"
 symbol = "Ih"
-pronouns = "he/him (fried)"
-author = "@irish"
+pronouns = "(fried) he/him"
+author = "@ichibin-irish"
 embed_color = 0xFBF0FE
 coordinates = { x = 997, y = 253 }
 
@@ -2414,7 +2450,7 @@ coordinates = { x = 647, y = 449 }
 table = "nonperiodics"
 symbol = "C₁₀H₁₅N"
 pronouns = "he/him"
-author = "@irish"
+author = "@ichibin-irish"
 embed_color = 0xA9D9F0
 coordinates = { x = 206, y = 498 }
 
@@ -2478,7 +2514,7 @@ coordinates = { x = 598, y = 498 }
 table = "nonperiodics"
 symbol = "CuSnZn"
 pronouns = "he/:gun:"
-author = "@irish"
+author = "@ichibin-irish"
 embed_color = 0x3E4357
 coordinates = { x = 647, y = 498 }
 
