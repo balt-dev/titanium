@@ -390,7 +390,7 @@ atomic_number = 41
 table = "normal"
 symbol = "Mo"
 pronouns = "he/him...?"
-author = "@elementcattos"
+author = "@ichibin-irish, @sciphonpylon, @elementcattos"
 embed_color = 0xC2BFBA
 coordinates = { x = 303, y = 344 }
 atomic_number = 42
@@ -534,7 +534,7 @@ atomic_number = 56
 table = "normal"
 symbol = "La"
 pronouns = "he/him"
-author = "@clover-the-servine, @elementcattos"
+author = "@clover-the-servine, @sciphonpylon, @elementcattos"
 embed_color = 0xB9B4A6
 coordinates = { x = 205, y = 500 }
 atomic_number = 57
@@ -588,7 +588,7 @@ atomic_number = 62
 table = "normal"
 symbol = "Eu"
 pronouns = "any/all"
-author = "@elementcattos"
+author = "@ichibin-irish, @velcrow101, @sciphonpylon, @elementcattos"
 embed_color = 0xFFE97F
 coordinates = { x = 499, y = 500 }
 atomic_number = 63
@@ -615,7 +615,7 @@ atomic_number = 65
 table = "normal"
 symbol = "Dy"
 pronouns = "she/her"
-author = "@clover-the-servine, @elementcattos"
+author = "@clover-the-servine, @sciphonpylon, @elementcattos"
 embed_color = 0xDFCFB7
 coordinates = { x = 646, y = 500 }
 atomic_number = 66
@@ -669,7 +669,7 @@ atomic_number = 71
 table = "normal"
 symbol = "Hf"
 pronouns = "they/them"
-author = "@shardthefuckingwhajje"
+author = "@shardthefuckingwhajje, @ichibin-irish"
 embed_color = 0x99918F
 coordinates = { x = 205, y = 393 }
 atomic_number = 72
@@ -822,7 +822,7 @@ atomic_number = 88
 table = "normal"
 symbol = "Ac"
 pronouns = "he/him"
-author = "@clover-the-servine, @elementcattos"
+author = "@clover-the-servine, @ichibin-irish"
 embed_color = 0x75ABE4
 coordinates = { x = 205, y = 549 }
 atomic_number = 89
@@ -1083,7 +1083,7 @@ atomic_number = 120
 table = "normal"
 symbol = "Cf"
 pronouns = "she/her"
-author = "@ichibin-irish, @thatmarkerdude, @haniszar36, @lythic-felinementals, @a-thalassophiliac"
+author = "@wildwhail, @ichibin-irish, @thatmarkerdude, @autism-detector, @haniszar36, @lythic-felinementals"
 embed_color = 0xC93835
 coordinates = { x = 646, y = 549 }
 atomic_number = 98
