@@ -956,7 +956,7 @@ atomic_number = 107
 ["Darmstadtium"]
 table = "normal"
 symbol = "Ds"
-pronouns = "he/it"
+pronouns = "he/him"
 author = "@sciphonpylon"
 embed_color = 0xF0B85A
 coordinates = { x = 499, y = 442 }
@@ -2270,14 +2270,6 @@ author = "@jc_1."
 embed_color = 0x6B70FF
 coordinates = { x = 997, y = 400 }
 
-["Washingtonium"]
-table = "nonperiodics"
-symbol = "Wa"
-pronouns = "he/they"
-author = "@jc_1."
-embed_color = 0x349943
-coordinates = { x = 997, y = 449 }
-
 ["Mottium"]
 table = "nonperiodics"
 symbol = "Mi"
@@ -2597,6 +2589,14 @@ pronouns = "she/her"
 author = "@pbcatto"
 embed_color = 0x002F6C
 coordinates = { x = 997, y = 596 }
+
+["Washingtonium"]
+table = "nonperiodics"
+symbol = "Wa"
+pronouns = "he/they"
+author = "@jc_1."
+embed_color = 0x349943
+coordinates = { x = 997, y = 449 }
 
 
 ### genderswap ###
