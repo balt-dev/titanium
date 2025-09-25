@@ -146,7 +146,7 @@ class CommandCog(commands.Cog, name = "Commands"):
             """Gets a random catto from the given table, or a random table."""
             await intr.response.defer(thinking=True)
             if not table:
-                table = rand.choice((*self.bot.tables.keys(), ))
+                table = rand.choice((*(table for table in self.bot.tables.keys() if "genderswap" not in table), ))
             els = self.bot.elements_by_table.get(table, None)
             if els is None:
                 query = table.replace("`", "").replace("\n", "")[:32]
@@ -159,7 +159,7 @@ class CommandCog(commands.Cog, name = "Commands"):
             query = query.strip().lower()
             choices = set()
             for table in self.bot.tables.keys():
-                if table.lower().startswith(query):
+                if table.lower().startswith(query) and "genderswap" not in table.lower():
                     choices.add(table.title().replace("_", " "))
             return [Choice(name=choice, value=choice.lower().replace(" ", "_")) for choice in sorted(choices, key = lambda str: str.lower().replace(" ", "_"))][:25]
 
