@@ -123,6 +123,7 @@ class Bot(commands.Bot):
     elements_by_atomic_number: dict[int, Element]
     elements_by_symbol: dict[str, Element]
     elements_by_name: dict[str, Element]
+    elements_by_table: dict[str, list[Element]]
 
     def __init__(self, *args, **kwargs):
         self.rest_client = None
@@ -131,6 +132,7 @@ class Bot(commands.Bot):
         self.elements_by_atomic_number = {}
         self.elements_by_symbol = {}
         self.elements_by_name = {}
+        self.elements_by_table = {}
         super().__init__(*args, **kwargs)
 
     def shutdown(self):
@@ -160,6 +162,7 @@ class Bot(commands.Bot):
         self.elements_by_name = {}
         self.elements_by_atomic_number = {}
         self.elements_by_symbol = {}        
+        self.elements_by_table = {}
     
         with open("elements.toml", "rb") as f:
             raw_elements = tomllib.load(f)
@@ -189,6 +192,10 @@ class Bot(commands.Bot):
                 image,
                 raw_element.get("oc", False)
             )
+            if "table" in raw_element:
+                if raw_element["table"] not in self.elements_by_table:
+                    self.elements_by_table[raw_element["table"]] = []
+                self.elements_by_table[raw_element["table"]].append(element)
             self.elements_by_name[name.lower()] = element
             if element.atomic_number is not None:
                 self.elements_by_atomic_number[element.atomic_number] = element

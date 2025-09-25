@@ -5,6 +5,7 @@ import os
 import sys
 from typing import TYPE_CHECKING, Literal
 import asyncio
+import random as rand
 
 import discord
 from discord import app_commands, Interaction
@@ -32,6 +33,45 @@ async def respond(interaction: Interaction, content: str | None = None, *, edit:
     return await interaction.response.send_message(content, **kwargs)
 
 class CommandCog(commands.Cog, name = "Commands"):
+    async def return_element(self, intr: Interaction, element, genderswapped: bool):
+        genderswapped &= not element.oc
+
+        if element.name == "Testosterone" and genderswapped:
+            element = self.bot.elements_by_name["estrogen"]
+        elif element.name == "Estrogen" and genderswapped:
+            element = self.bot.elements_by_name["testosterone"]
+
+        icon = self.bot.get_element_icon(element, genderswapped)
+        width, height = icon.size
+        icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
+
+        emb = discord.Embed (
+            color=element.embed_color,
+            title=element.name
+        )
+        emb.add_field(name="Symbol", value=element.symbol)
+        if element.atomic_number is not None:
+            emb.add_field(name="Atomic Number", value=element.atomic_number)
+        pronouns = element.pronouns
+        if genderswapped and "/" in pronouns and not (
+            element.name in ("Testosterone", "Estrogen")
+        ):
+            parts = pronouns.split("/")
+            table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?", "him*": "her*", "trim": "ter"}
+            pronouns = "/".join(table.get(part, part) for part in parts)
+        emb.add_field(name="Pronouns", value=pronouns)
+        emb.add_field(name="Author", value=element.author, inline = False)
+        if element.atomic_number is not None:
+            emb.add_field(name="Wiki Page", value=f"[[link]](<https://elementcattos.miraheze.org/wiki/{element.name}>)", inline = True)
+        buf = io.BytesIO()
+        icon.save(buf, format = "PNG")
+        buf.seek(0)
+        raw_name = "".join(c if c.isalnum() else "_" for c in element.name).lower()
+        path = f"{raw_name}.png"
+        emb.set_image(url=f"attachment://{path}")
+        file = discord.File(buf, path)
+        return await respond(intr, embed=emb, files=[file])
+
     def __init__(self, bot: Bot):
         self.bot = bot
         print("Loading commands...")
@@ -58,46 +98,10 @@ class CommandCog(commands.Cog, name = "Commands"):
                 element = self.bot.elements_by_atomic_number[atomic_number]
             else:
                 query = query.replace("`", "").replace("\n", "")[:32]
-                return await error(intr, f"No element found with name, symbol, or atomic number `{query}`!")   
-            
-            genderswapped &= not element.oc
+                return await error(intr, f"No element found with name, symbol, or atomic number `{query}`!")
 
-            if element.name == "Testosterone" and genderswapped:
-                element = self.bot.elements_by_name["estrogen"]
-            elif element.name == "Estrogen" and genderswapped:
-                element = self.bot.elements_by_name["testosterone"]
+            return await self.return_element(intr, element, genderswapped)
 
-            icon = self.bot.get_element_icon(element, genderswapped)
-            width, height = icon.size
-            icon = icon.resize((width * config.icon_scale, height * config.icon_scale), Image.Resampling.NEAREST)
-
-            emb = discord.Embed (
-                color=element.embed_color,
-                title=element.name
-            )
-            emb.add_field(name="Symbol", value=element.symbol)
-            if element.atomic_number is not None:
-                emb.add_field(name="Atomic Number", value=element.atomic_number)
-            pronouns = element.pronouns
-            if genderswapped and "/" in pronouns and not (
-                element.name in ("Testosterone", "Estrogen") 
-            ):
-                parts = pronouns.split("/")
-                table = {"he": "she", "him": "her", "she": "he", "her": "him", "hse": "eh", "ehr": "ihm", "him...?": "her...?", "him*": "her*", "trim": "ter"}
-                pronouns = "/".join(table.get(part, part) for part in parts)
-            emb.add_field(name="Pronouns", value=pronouns)
-            emb.add_field(name="Author", value=element.author, inline = False)
-            if element.atomic_number is not None:
-                emb.add_field(name="Wiki Page", value=f"[[link]](<https://elementcattos.miraheze.org/wiki/{element.name}>)", inline = True)
-            buf = io.BytesIO()
-            icon.save(buf, format = "PNG")
-            buf.seek(0)
-            raw_name = "".join(c if c.isalnum() else "_" for c in element.name).lower()
-            path = f"{raw_name}.png"
-            emb.set_image(url=f"attachment://{path}")
-            file = discord.File(buf, path)
-            return await respond(intr, embed=emb, files=[file])
-        
         @element.autocomplete("query")
         async def complete_query(interaction: Interaction, query: str):
             query = query.strip().lower()
@@ -110,10 +114,10 @@ class CommandCog(commands.Cog, name = "Commands"):
             return [Choice(name=choice, value=choice) for choice in sorted(choices, key = lambda str: str.lower())][:25]
 
         @bot.tree.command()
-        async def table(intr: Interaction, query: str):
+        async def table(intr: Interaction, table: str):
             """Gets an entire table."""
             await intr.response.defer(thinking=True)
-            query = query.strip().lower()
+            query = table.strip().lower()
             try:
                 table = self.bot.tables[query]
             except KeyError:
@@ -128,14 +132,36 @@ class CommandCog(commands.Cog, name = "Commands"):
             file = discord.File(buf, path)
             return await respond(intr, embed=emb, files=[file])
 
-        @table.autocomplete("query")
+        @table.autocomplete("table")
         async def complete_query(interaction: Interaction, query: str):
             query = query.strip().lower()
             choices = set()
-            for table in self.bot.tables.values():
+            for table in self.bot.tables.keys():
                 if table.lower().startswith(query):
-                    choices.add(el.name)
-            return [Choice(name=choice, value=choice) for choice in sorted(choices, key = lambda str: str.lower())][:25]
+                    choices.add(table.title().replace("_", " "))
+            return [Choice(name=choice, value=choice.lower().replace(" ", "_")) for choice in sorted(choices, key = lambda str: str.lower().replace(" ", "_"))][:25]
+
+        @bot.tree.command()
+        async def random(intr: Interaction, table: str = ""):
+            """Gets a random catto from the given table, or a random table."""
+            await intr.response.defer(thinking=True)
+            if not table:
+                table = rand.choice((*self.bot.tables.keys(), ))
+            els = self.bot.elements_by_table.get(table, None)
+            if els is None:
+                query = table.replace("`", "").replace("\n", "")[:32]
+                return await error(intr, f"No table found with name `{query}`!")
+            element = rand.choice(els)
+            return await self.return_element(intr, element, False)
+
+        @random.autocomplete("table")
+        async def complete_query(interaction: Interaction, query: str):
+            query = query.strip().lower()
+            choices = set()
+            for table in self.bot.tables.keys():
+                if table.lower().startswith(query):
+                    choices.add(table.title().replace("_", " "))
+            return [Choice(name=choice, value=choice.lower().replace(" ", "_")) for choice in sorted(choices, key = lambda str: str.lower().replace(" ", "_"))][:25]
 
         @bot.tree.command()
         async def sync(intr: Interaction):
@@ -147,11 +173,10 @@ class CommandCog(commands.Cog, name = "Commands"):
             return await respond(intr, "Synced image!", ephemeral=True)
 
         @bot.tree.command()
-        async def sync_tree(interaction: Interaction, testing: bool = True):
+        async def sync_tree(interaction: Interaction):
             await interaction.response.defer(thinking=True)
-            TESTING_GUILD = discord.Object(586337032876589075)
             assert await self.bot.is_owner(interaction.user), "This command can only be run by the bot's owners!"
-            await self.bot.tree.sync(guild=TESTING_GUILD if testing else None)
+            await self.bot.tree.sync()
             await respond(interaction, "Synced!", ephemeral=True)
 
         @bot.tree.command()
