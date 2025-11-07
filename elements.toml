@@ -848,7 +848,7 @@ atomic_number = 91
 ["Uranium"]
 table = "normal"
 symbol = "U"
-pronouns = "any/all"
+pronouns = "he/any"
 author = "@elementcattos"
 embed_color = 0xFFD800
 coordinates = { x = 352, y = 549 }
@@ -857,7 +857,7 @@ atomic_number = 92
 ["Neptunium"]
 table = "normal"
 symbol = "Np"
-pronouns = "any/all"
+pronouns = "he/any"
 author = "@elementcattos"
 embed_color = 0x7FC9FF
 coordinates = { x = 401, y = 549 }
@@ -866,7 +866,7 @@ atomic_number = 93
 ["Plutonium"]
 table = "normal"
 symbol = "Pu"
-pronouns = "any/all"
+pronouns = "he/any"
 author = "@elementcattos"
 embed_color = 0x0094FF
 coordinates = { x = 450, y = 549 }
