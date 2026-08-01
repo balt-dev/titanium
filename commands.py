@@ -27,7 +27,7 @@ async def error(interaction: Interaction, *args, **kwargs):
 async def respond(interaction: Interaction, content: str | None = None, *, edit: bool = False, **kwargs):
     if interaction.response.is_done():
         if edit:
-            if "ephemeral" in kwargs: del kwargs["ephemeral"]
+            kwargs.pop("ephemeral", None)
             return await (await interaction.original_response()).edit(**kwargs, content=content)
         return await interaction.followup.send(content, **kwargs)
     return await interaction.response.send_message(content, **kwargs)
@@ -136,7 +136,7 @@ class CommandCog(commands.Cog, name = "Commands"):
         async def complete_query(interaction: Interaction, query: str):
             query = query.strip().lower()
             choices = set()
-            for table in self.bot.tables.keys():
+            for table in self.bot.tables:
                 if table.lower().startswith(query):
                     choices.add(table.title().replace("_", " "))
             return [Choice(name=choice, value=choice.lower().replace(" ", "_")) for choice in sorted(choices, key = lambda str: str.lower().replace(" ", "_"))][:25]
@@ -146,7 +146,7 @@ class CommandCog(commands.Cog, name = "Commands"):
             """Gets a random catto from the given table, or a random table."""
             await intr.response.defer(thinking=True)
             if not table:
-                table = rand.choice((*(table for table in self.bot.tables.keys() if "genderswap" not in table), ))
+                table = rand.choice((*(table for table in self.bot.tables if "genderswap" not in table), ))
             els = self.bot.elements_by_table.get(table, None)
             if els is None:
                 query = table.replace("`", "").replace("\n", "")[:32]
@@ -158,22 +158,13 @@ class CommandCog(commands.Cog, name = "Commands"):
         async def complete_query(interaction: Interaction, query: str):
             query = query.strip().lower()
             choices = set()
-            for table in self.bot.tables.keys():
+            for table in self.bot.tables:
                 if table.lower().startswith(query) and "genderswap" not in table.lower():
                     choices.add(table.title().replace("_", " "))
             return [Choice(name=choice, value=choice.lower().replace(" ", "_")) for choice in sorted(choices, key = lambda str: str.lower().replace(" ", "_"))][:25]
 
         @bot.tree.command()
-        async def sync(intr: Interaction):
-            """Syncs the table to the bot. Owner-only."""
-            await intr.response.defer(thinking=True)
-            assert await self.bot.is_owner(intr.user), "This command can only be run by the bot's owners!"
-            self.bot.sync_image()
-            self.bot.load_elements()
-            return await respond(intr, "Synced image!", ephemeral=True)
-
-        @bot.tree.command()
-        async def sync_tree(interaction: Interaction):
+        async def sync(interaction: Interaction):
             await interaction.response.defer(thinking=True)
             assert await self.bot.is_owner(interaction.user), "This command can only be run by the bot's owners!"
             await self.bot.tree.sync()
@@ -182,7 +173,6 @@ class CommandCog(commands.Cog, name = "Commands"):
         @bot.tree.command()
         async def restart(interaction: Interaction):
             await interaction.response.defer(thinking=True)
-            TESTING_GUILD = discord.Object(586337032876589075)
             assert await self.bot.is_owner(interaction.user), "This command can only be run by the bot's owners!"
             await respond(interaction, "Restarting...", ephemeral=True)
             self.bot.shutdown()
@@ -202,7 +192,7 @@ class CommandCog(commands.Cog, name = "Commands"):
         err
     ):
         try:
-            if isinstance(err, app_commands.CommandInvokeError) or isinstance(err, commands.ExtensionFailed):
+            if isinstance(err, (app_commands.CommandInvokeError, commands.ExtensionFailed)):
                 err = err.original
             if isinstance(err, app_commands.CheckFailure):
                 return await respond(interaction, "This command can only be run by the owners of the bot!", ephemeral=True)
